@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>speedEx // TERMINAL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: var(--c-obsidian);
+            color: var(--c-paper);
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
+        .terminal-grid {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            min-height: calc(100vh - 120px);
+            margin-top: 120px;
+            padding: 0 5vw;
+            max-width: 100%;
+            position: relative;
+        }
+
+        .sidebar-toggle {
+            position: fixed;
+            top: 140px;
+            left: 5vw;
+            z-index: 999;
+            background: var(--c-kinetic);
+            color: white;
+            border: 2px solid var(--c-obsidian);
+            padding: 0.8rem 1.2rem;
+            font-weight: 900;
+            font-size: 0.8rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: var(--t-fast);
+        }
+
+        .sidebar-toggle:hover {
+            transform: translateX(5px);
+        }
+
+        .terminal-sidebar {
+            padding: 4rem 0;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+            background: var(--c-obsidian);
+        }
+
+        .terminal-sidebar.hidden {
+            transform: translateX(-100%);
+            position: absolute;
+            left: 0;
+        }
+
+        @media (min-width: 1025px) {
+            .terminal-grid {
+                margin-top: 120px !important;
+            }
+
+            .sidebar-toggle {
+                display: none !important;
+            }
+        }
+
+        .terminal-main {
+            transition: margin-left 0.3s ease;
+        }
+
+        .terminal-sidebar.hidden~.terminal-main {
+            margin-left: 0;
+        }
+
+        .sidebar-link {
+            display: block;
+            padding: 1rem 0;
+            color: var(--c-paper);
+            text-decoration: none;
+            opacity: 0.6;
+            transition: var(--t-fast);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-left: 2px solid transparent;
+            padding-left: 1rem;
+        }
+
+        .sidebar-link:hover,
+        .sidebar-link.active {
+            opacity: 1;
+            color: var(--c-kinetic);
+            border-left-color: var(--c-kinetic);
+            padding-left: 1.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .terminal-grid {
+                grid-template-columns: 1fr;
+                margin-top: 0 !important;
+            }
+
+            .sidebar-toggle {
+                top: 90px;
+            }
+
+            .terminal-sidebar {
+                position: fixed;
+                left: 0;
+                top: 70px;
+                height: calc(100vh - 70px);
+                width: 250px;
+                z-index: 998;
+                background: var(--c-obsidian);
+                border-right: 2px solid rgba(255, 255, 255, 0.2);
+                overflow-y: auto;
+                transform: translateX(-100%);
+                padding: 2rem 0;
+            }
+
+            .terminal-sidebar.visible {
+                transform: translateX(0);
+            }
+
+            .sidebar-link {
+                border-left: 2px solid transparent;
+                padding: 1rem;
+            }
+
+            .sidebar-link:hover,
+            .sidebar-link.active {
+                border-left-color: var(--c-kinetic);
+                padding-left: 1.5rem;
+            }
+        }
+
+        .terminal-main {
+            padding: 0.5rem 0;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .data-stream {
+            font-family: monospace;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            margin-bottom: 2rem;
+        }
+
+        .stat-giant {
+            font-size: 10vw;
+            font-weight: 900;
+            line-height: 0.8;
+            margin: 2rem 0;
+            color: var(--c-kinetic);
+        }
+
+        .node-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+        }
+
+        .node-table th {
+            text-align: left;
+            opacity: 0.5;
+            padding-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .node-table td {
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="vertical-text">EST. 2026 // speedEx FLOW // GLOBAL NODES</div>
+
+    <nav>
+        <div class="nav-module">
+            <div class="nav-logo" onclick="location.href='index.html'" style="cursor: pointer;">speedEx</div>
+        </div>
+        <div class="nav-module nav-links">
+            <select class="nav-select" onchange="if(this.value) location.href=this.value">
+                <option value="" disabled selected>Home</option>
+                <option value="index.html">Home 1 // Main Grid</option>
+                <option value="index2.html">Home 2 // Ghost Protocol</option>
+            </select>
+            <a href="about.html" data-id="RT_02">About</a>
+            <a href="services.html" data-id="RT_03">Services</a>
+            <a href="contact.html" data-id="RT_04">Contact</a>
+            <select class="nav-select" onchange="if(this.value) location.href=this.value">
+                <option value="" disabled selected>Dashboards</option>
+                <option value="dashboard-user.html">User // Node Terminal</option>
+                <option value="dashboard-admin.html">Admin // Core Logic</option>
+            </select>
+        </div>
+        <div class="nav-module nav-actions">
+            <button id="rtl-toggle" class="icon-btn">🌐</button>
+            <button id="theme-toggle" class="icon-btn">🌗</button>
+            <button class="nav-btn" onclick="location.href='login.html'">LOGIN</button>
+        </div>
+    </nav>
+
+    <div class="dash-mobile-nav">
+        <div class="dash-nav-container">
+            <a href="#" class="sidebar-link active" data-section="overview">OVERVIEW</a>
+            <a href="#" class="sidebar-link" data-section="shipments">SHIPMENTS</a>
+            <a href="#" class="sidebar-link" data-section="notifications">NOTIFS</a>
+            <a href="#" class="sidebar-link" data-section="settings">SETTINGS</a>
+        </div>
+    </div>
+
+    <div class="terminal-grid">
+        <aside class="terminal-sidebar">
+            <div style="font-weight: 900; margin-bottom: 2rem; color: var(--c-kinetic);">[ MENU_V1 ]</div>
+            <a href="#" class="sidebar-link active" data-section="overview">Overview</a>
+            <a href="#" class="sidebar-link" data-section="shipments">Active Shipments</a>
+            <a href="#" class="sidebar-link" data-section="notifications">Notifications <span
+                    style="font-size:0.7rem; background:var(--c-kinetic); color:black; padding:0 0.4rem; border-radius:10px;">3</span></a>
+            <a href="#" class="sidebar-link" data-section="settings">Settings</a>
+            <a href="#" class="sidebar-link" style="margin-top: 4rem; color: #ff3c00;"
+                onclick="alert('Logout functionality'); return false;">[ LOGOUT ]</a>
+        </aside>
+        <main class="terminal-main">
+            <div class="data-stream"></div>
+
+            <header style="display: flex; justify-content: space-between; align-items: flex-end;">
+                <div>
+                    <h1 style="font-size: 3rem; text-transform: uppercase; line-height: 0.9;">System<br>Overview
+                    </h1>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 0.8rem; opacity: 0.5;">speedEx_PROTO_V1.1</div>
+                    <div style="font-size: 1.5rem; font-weight: 900;">19:15:22</div>
+                </div>
+            </header>
+
+            <div class="stat-giant">42 // 812</div>
+            <p style="text-transform: uppercase; letter-spacing: 0.3em;">Active Nodes / Total Throughput</p>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 4rem; margin-top: 4rem;">
+                <div>
+                    <h2 style="margin-bottom: 2rem;">ACTIVE_SHIPMENTS</h2>
+                    <table class="node-table" style="margin-top: 0;">
+                        <thead>
+                            <tr>
+                                <th>Node_ID</th>
+                                <th>Coordinate</th>
+                                <th>Velocity</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#K-9221</td>
+                                <td>40.7128 N, 74.0060 W</td>
+                                <td>SYNCED</td>
+                                <td style="color: var(--c-kinetic);">[ IN_TRANSIT ]</td>
+                            </tr>
+                            <tr>
+                                <td>#K-4402</td>
+                                <td>34.0522 N, 118.2437 W</td>
+                                <td>STABLE</td>
+                                <td>[ DELIVERED ]</td>
+                            </tr>
+                            <tr>
+                                <td>#K-1108</td>
+                                <td>51.5074 N, 0.1278 W</td>
+                                <td>SYNCED</td>
+                                <td style="color: var(--c-kinetic);">[ IN_TRANSIT ]</td>
+                            </tr>
+                            <tr>
+                                <td>#K-7719</td>
+                                <td>35.6762 N, 139.6503 E</td>
+                                <td>INITIALIZING</td>
+                                <td style="opacity: 0.5;">[ PENDING ]</td>
+                            </tr>
+                            <tr>
+                                <td>#K-2291</td>
+                                <td>22.3193 N, 114.1694 E</td>
+                                <td>SYNCED</td>
+                                <td style="color: var(--c-kinetic);">[ IN_TRANSIT ]</td>
+                            </tr>
+                            <tr>
+                                <td>#K-5588</td>
+                                <td>1.3521 N, 103.8198 E</td>
+                                <td>STABLE</td>
+                                <td>[ DELIVERED ]</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <h2 style="margin-bottom: 2rem;">QUICK_ACTIONS</h2>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <button class="nav-btn"
+                            style="width: 100%; height: 80px; text-align: left; padding: 0 2rem; border: 1px solid rgba(255,255,255,0.1); background: none;">[+]
+                            INITIATE_NEW_FLOW</button>
+                        <button class="nav-btn"
+                            style="width: 100%; height: 80px; text-align: left; padding: 0 2rem; border: 1px solid rgba(255,255,255,0.1); background: none;">[↑]
+                            BULK_ASSIGNMENT</button>
+                        <button class="nav-btn"
+                            style="width: 100%; height: 80px; text-align: left; padding: 0 2rem; border: 1px solid rgba(255,255,255,0.1); background: none;">[⚡]
+                            TURBO_BOOST_NODE</button>
+                        <button class="nav-btn"
+                            style="width: 100%; height: 80px; text-align: left; padding: 0 2rem; border: 1px solid rgba(255,255,255,0.1); background: none;">[?]
+                            ASSISTANCE_SIGNAL</button>
+                    </div>
+
+                    <div style="margin-top: 4rem; padding: 2rem; background: rgba(255,255,255,0.05);">
+                        <h4 style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 1rem;">SYSTEM_ANNOUNCEMENT</h4>
+                        <p style="font-size: 0.9rem; opacity: 0.8; line-height: 1.4;">New node cluster active in
+                            South-East Asia. Latency for Tokyo-Singapore corridor reduced by 15ms.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 6rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 4rem;">
+                <h2 style="margin-bottom: 3rem;">NODE_TRAFFIC_ANALYSIS</h2>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;">
+                    <div
+                        style="padding: 2rem; background: rgba(255,255,255,0.02); border-left: 5px solid var(--c-kinetic);">
+                        <h4 style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 1rem;">PEAK_VELOCITY</h4>
+                        <div style="font-size: 2.5rem; font-weight: 900;">1,240 <span
+                                style="font-size: 1rem; opacity: 0.5;">km/h</span></div>
+                    </div>
+                    <div style="padding: 2rem; background: rgba(255,255,255,0.02); border-left: 5px solid white;">
+                        <h4 style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 1rem;">LATENCY_AVG</h4>
+                        <div style="font-size: 2.5rem; font-weight: 900;">4.2 <span
+                                style="font-size: 1rem; opacity: 0.5;">ms</span></div>
+                    </div>
+                    <div style="padding: 2rem; background: rgba(255,255,255,0.02); border-left: 5px solid white;">
+                        <h4 style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 1rem;">DROPOUT_RATE</h4>
+                        <div style="font-size: 2.5rem; font-weight: 900;">0.02 <span
+                                style="font-size: 1rem; opacity: 0.5;">%</span></div>
+                    </div>
+                    <div style="padding: 2rem; background: rgba(255,255,255,0.02); border-left: 5px solid white;">
+                        <h4 style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 1rem;">ENCRYPT_STATUS</h4>
+                        <div style="font-size: 2.5rem; font-weight: 900; color: var(--c-kinetic);">LIVE</div>
+                    </div>
+                </div>
+
+                <div
+                    style="margin-top: 4rem; background: var(--c-kinetic); border-left: 5px solid white; padding: 1.5rem; position: relative; width: 100%; box-sizing: border-box;">
+                    <div
+                        style="font-family: monospace; font-size: 0.8rem; line-height: 1.5; color: #000; font-weight: 900; word-break: break-all;">
+                        [ PROGRESS_BAR ]: DATA_SYNC //////////////////////////////// <br>75% COMPLETE
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics Charts Section -->
+            <div style="margin-top: 6rem; border-top: 3px solid var(--c-kinetic); padding-top: 4rem;">
+                <h2 style="margin-bottom: 3rem; font-size: 3rem;">ANALYTICS_CORE</h2>
+
+                <!-- Shipment Volume Chart - REDESIGNED -->
+                <div style="margin-bottom: 6rem;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem;">
+                        <div>
+                            <h3
+                                style="font-size: 2rem; margin-bottom: 0.5rem; color: var(--c-kinetic); text-transform: uppercase; letter-spacing: 0.1em;">
+                                WEEKLY_VOLUME</h3>
+                            <p style="font-size: 0.9rem; opacity: 0.5;">SHIPMENTS // CURRENT WEEK</p>
+                        </div>
+                        <div style="display: flex; gap: 2rem; font-size: 0.8rem;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 15px; height: 15px; background: var(--c-kinetic);"></div>
+                                <span style="opacity: 0.7;">PEAK DAY</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 15px; height: 15px; background: rgba(255,255,255,0.3);"></div>
+                                <span style="opacity: 0.7;">STANDARD</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chart Container -->
+                    <div
+                        style="background: rgba(255,255,255,0.02); border: 2px solid rgba(255,255,255,0.15); padding: 3rem 2rem; position: relative;">
+                        <!-- Grid Lines -->
+                        <div
+                            style="position: absolute; top: 3rem; left: 2rem; right: 2rem; bottom: 5rem; display: flex; flex-direction: column; justify-content: space-between; pointer-events: none;">
+                            <div style="border-top: 1px solid rgba(255,255,255,0.05);"></div>
+                            <div style="border-top: 1px solid rgba(255,255,255,0.05);"></div>
+                            <div style="border-top: 1px solid rgba(255,255,255,0.05);"></div>
+                            <div style="border-top: 1px solid rgba(255,255,255,0.05);"></div>
+                        </div>
+
+                        <!-- Y-Axis Labels -->
+                        <div
+                            style="position: absolute; left: 0; top: 3rem; bottom: 5rem; display: flex; flex-direction: column; justify-content: space-between; font-size: 0.7rem; opacity: 0.4; font-family: monospace;">
+                            <div>40</div>
+                            <div>30</div>
+                            <div>20</div>
+                            <div>10</div>
+                            <div>0</div>
+                        </div>
+
+                        <!-- Bars -->
+                        <div
+                            style="display: flex; align-items: flex-end; gap: 1rem; height: 350px; padding-left: 3rem; position: relative;">
+                            <!-- Monday -->
+                            <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 1rem; cursor: pointer; transition: transform 0.3s;"
+                                onmouseover="this.style.transform='translateY(-10px)'"
+                                onmouseout="this.style.transform='translateY(0)'">
+                                <div
+                                    style="width: 100%; height: 45%; background: linear-gradient(180deg, var(--c-kinetic) 0%, rgba(255,60,0,0.6) 100%); position: relative; border-top: 3px solid var(--c-kinetic); transition: all 0.3s;">
+                                    <div
+                                        style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); font-weight: 900; font-size: 1.2rem; color: var(--c-kinetic);">
+                                        18</div>
+                                </div>
+                                <div style="font-size: 0.8rem; font-weight: 900; opacity: 0.6; letter-spacing: 0.1em;">
+                                    MON</div>
+                            </div>
+
+                            <!-- Tuesday -->
+                            <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 1rem; cursor: pointer; transition: transform 0.3s;"
+                                onmouseover="this.style.transform='translateY(-10px)'"
+                                onmouseout="this.style.transform='translateY(0)'">
+                                <div
+                                    style="width: 100%; height: 72%; background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.15) 100%); position: relative; border-top: 3px solid rgba(255,255,255,0.6); transition: all 0.3s;">
+                                    <div
+                                        style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); font-weight: 900; font-size: 1.2rem;">
+                                        29</div>
+                                </div>
+                                <div style="font-size: 0.8rem; font-weight: 900; opacity: 0.6; letter-spacing: 0.1em;">
+                                    TUE</div>
+                            </div>
+
+                            <!-- Wednesday -->
+                            <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 1rem; cursor: pointer; transition: transform 0.3s;"
+                                onmouseover="this.style.transform='translateY(-10px)'"
+                                onmouseout="this.style.transform='translateY(0)'">
+                                <div
+                                    style="width: 100%; height: 58%; background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.15) 100%); position: relative; border-top: 3px solid rgba(255,255,255,0.6); transition: all 0.3s;">
+                                    <div
+                                        style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); font-weight: 900; font-size: 1.2rem;">
+                                        23</div>
+                                </div>
+                                <div style="font-size: 0.8rem; font-weight: 900; opacity: 0.6; letter-spacing: 0.1em;">
+                                    WED</div>
+                            </div>
+
+                            <!-- Thursday -->
+                            <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 1rem; cursor: pointer; transition: transform 0.3s;"
+                                onmouseover="this.style.transform='translateY(-10px)'"
+                                onmouseout="this.style.transform='translateY(0)'">
+                                <div
+                                    style="width: 100%; height: 85%; background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.15) 100%); position: relative; border-top: 3px solid rgba(255,255,255,0.6); transition: all 0.3s;">
+                                    <div
+                                        style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); font-weight: 900; font-size: 1.2rem;">
+                                        34</div>
+                                </div>
+                                <div style="font-size: 0.8rem; font-weight: 900; opacity: 0.6; letter-spacing: 0.1em;">
+                                    THU</div>
+                            </div>
+
+                            <!-- Friday - PEAK -->
+                            <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 1rem; cursor: pointer; transition: transform 0.3s;"
+                                onmouseover="this.style.transform='translateY(-10px)'"
+                                onmouseout="this.style.transform='translateY(0)'">
+                                <div
+                                    style="width: 100%; height: 100%; background: linear-gradient(180deg, var(--c-kinetic) 0%, rgba(255,60,0,0.6) 100%); position: relative; border-top: 3px solid var(--c-kinetic); transition: all 0.3s; box-shadow: 0 0 20px rgba(255,60,0,0.3);">
+                                    <div
+                                        style="position: absolute; top: -2.5rem; left: 50%; transform: translateX(-50%); font-weight: 900; font-size: 1.5rem; color: var(--c-kinetic);">
+                                        40</div>
+
+                                </div>
+                                <div
+                                    style="font-size: 0.8rem; font-weight: 900; color: var(--c-kinetic); letter-spacing: 0.1em;">
+                                    FRI</div>
+                            </div>
+
+                            <!-- Saturday -->
+                            <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 1rem; cursor: pointer; transition: transform 0.3s;"
+                                onmouseover="this.style.transform='translateY(-10px)'"
+                                onmouseout="this.style.transform='translateY(0)'">
+                                <div
+                                    style="width: 100%; height: 38%; background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.15) 100%); position: relative; border-top: 3px solid rgba(255,255,255,0.6); transition: all 0.3s;">
+                                    <div
+                                        style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); font-weight: 900; font-size: 1.2rem;">
+                                        15</div>
+                                </div>
+                                <div style="font-size: 0.8rem; font-weight: 900; opacity: 0.6; letter-spacing: 0.1em;">
+                                    SAT</div>
+                            </div>
+
+                            <!-- Sunday -->
+                            <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 1rem; cursor: pointer; transition: transform 0.3s;"
+                                onmouseover="this.style.transform='translateY(-10px)'"
+                                onmouseout="this.style.transform='translateY(0)'">
+                                <div
+                                    style="width: 100%; height: 25%; background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.15) 100%); position: relative; border-top: 3px solid rgba(255,255,255,0.6); transition: all 0.3s;">
+                                    <div
+                                        style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); font-weight: 900; font-size: 1.2rem;">
+                                        10</div>
+                                </div>
+                                <div style="font-size: 0.8rem; font-weight: 900; opacity: 0.6; letter-spacing: 0.1em;">
+                                    SUN</div>
+                            </div>
+                        </div>
+
+                        <!-- Stats Summary -->
+                        <div
+                            style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.8rem; font-weight: 900; color: var(--c-kinetic);">169</div>
+                                <div
+                                    style="font-size: 0.7rem; opacity: 0.5; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.5rem;">
+                                    TOTAL_WEEK</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.8rem; font-weight: 900;">24.1</div>
+                                <div
+                                    style="font-size: 0.7rem; opacity: 0.5; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.5rem;">
+                                    AVG_PER_DAY</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.8rem; font-weight: 900; color: var(--c-kinetic);">40</div>
+                                <div
+                                    style="font-size: 0.7rem; opacity: 0.5; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.5rem;">
+                                    HIGHEST_DAY</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.8rem; font-weight: 900;">+12%</div>
+                                <div
+                                    style="font-size: 0.7rem; opacity: 0.5; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.5rem;">
+                                    VS_LAST_WEEK</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shipment Distribution - PIE CHART -->
+                <div>
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem;">
+                        <div>
+                            <h3
+                                style="font-size: 2rem; margin-bottom: 0.5rem; color: var(--c-kinetic); text-transform: uppercase; letter-spacing: 0.1em;">
+                                SHIPMENT_DISTRIBUTION</h3>
+                            <p style="font-size: 0.9rem; opacity: 0.5;">BY SERVICE TYPE // CURRENT MONTH</p>
+                        </div>
+                    </div>
+
+                    <div
+                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; background: rgba(255,255,255,0.02); border: 2px solid rgba(255,255,255,0.15); padding: 3rem;">
+                        <!-- Pie Chart -->
+                        <div style="display: flex; align-items: center; justify-content: center; position: relative;">
+                            <svg width="400" height="400" viewBox="-110 -110 220 220"
+                                style="transform: rotate(-90deg);">
+                                <!-- Background circle to ensure perfect roundness -->
+                                <circle cx="0" cy="0" r="100" fill="var(--c-obsidian)" stroke="rgba(255,255,255,0.1)"
+                                    stroke-width="0.5" />
+
+                                <!-- EXPRESS (40%) - 144 degrees -->
+                                <circle cx="0" cy="0" r="50" fill="transparent" stroke="var(--c-kinetic)"
+                                    stroke-width="100" stroke-dasharray="251.2 628" stroke-dashoffset="0"
+                                    style="cursor: pointer; transition: all 0.3s;"
+                                    onmouseover="this.setAttribute('stroke-width', '105')"
+                                    onmouseout="this.setAttribute('stroke-width', '100')" />
+
+                                <!-- STANDARD (30%) - 108 degrees -->
+                                <circle cx="0" cy="0" r="50" fill="transparent" stroke="rgba(255,255,255,0.4)"
+                                    stroke-width="100" stroke-dasharray="188.4 628" stroke-dashoffset="-251.2"
+                                    style="cursor: pointer; transition: all 0.3s;"
+                                    onmouseover="this.setAttribute('stroke-width', '105')"
+                                    onmouseout="this.setAttribute('stroke-width', '100')" />
+
+                                <!-- FREIGHT (20%) - 72 degrees -->
+                                <circle cx="0" cy="0" r="50" fill="transparent" stroke="rgba(255,255,255,0.25)"
+                                    stroke-width="100" stroke-dasharray="125.6 628" stroke-dashoffset="-439.6"
+                                    style="cursor: pointer; transition: all 0.3s;"
+                                    onmouseover="this.setAttribute('stroke-width', '105')"
+                                    onmouseout="this.setAttribute('stroke-width', '100')" />
+
+                                <!-- PRIORITY (10%) - 36 degrees -->
+                                <circle cx="0" cy="0" r="50" fill="transparent" stroke="rgba(255,255,255,0.15)"
+                                    stroke-width="100" stroke-dasharray="62.8 628" stroke-dashoffset="-565.2"
+                                    style="cursor: pointer; transition: all 0.3s;"
+                                    onmouseover="this.setAttribute('stroke-width', '105')"
+                                    onmouseout="this.setAttribute('stroke-width', '100')" />
+
+                                <!-- Center circle -->
+                                <circle cx="0" cy="0" r="30" fill="var(--c-obsidian)" stroke="rgba(255,255,255,0.3)"
+                                    stroke-width="2" />
+                            </svg>
+
+                            <!-- Center Text -->
+                            <div style="position: absolute; text-align: center;">
+                                <div style="font-size: 3rem; font-weight: 900; color: var(--c-kinetic);">944</div>
+                                <div
+                                    style="font-size: 0.7rem; opacity: 0.5; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.5rem;">
+                                    TOTAL</div>
+                            </div>
+                        </div>
+
+                        <!-- Legend and Stats -->
+                        <div style="display: flex; flex-direction: column; justify-content: center; gap: 2rem;">
+                            <!-- EXPRESS -->
+                            <div style="border-left: 5px solid var(--c-kinetic); padding-left: 1.5rem; cursor: pointer; transition: all 0.3s;"
+                                onmouseover="this.style.paddingLeft='2rem'"
+                                onmouseout="this.style.paddingLeft='1.5rem'">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                    <div>
+                                        <div style="font-size: 1.3rem; font-weight: 900; color: var(--c-kinetic);">
+                                            EXPRESS</div>
+                                        <div
+                                            style="font-size: 0.7rem; opacity: 0.5; text-transform: uppercase; margin-top: 0.3rem;">
+                                            24-48H DELIVERY</div>
+                                    </div>
+                                    <div style="font-size: 2rem; font-weight: 900; color: var(--c-kinetic);">40%
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: 1rem; font-size: 0.8rem; opacity: 0.6;">
+                                    <span>378 shipments</span>
+                                    <span>•</span>
+                                    <span>↑ 8% vs last month</span>
+                                </div>
+                            </div>
+
+                            <!-- STANDARD -->
+                            <div style="border-left: 5px solid rgba(255,255,255,0.4); padding-left: 1.5rem; cursor: pointer; transition: all 0.3s;"
+                                onmouseover="this.style.paddingLeft='2rem'"
+                                onmouseout="this.style.paddingLeft='1.5rem'">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                    <div>
+                                        <div style="font-size: 1.3rem; font-weight: 900;">STANDARD</div>
+                                        <div
+                                            style="font-size: 0.7rem; opacity: 0.5; text-transform: uppercase; margin-top: 0.3rem;">
+                                            3-5 DAY DELIVERY</div>
+                                    </div>
+                                    <div style="font-size: 2rem; font-weight: 900;">30%</div>
+                                </div>
+                                <div style="display: flex; gap: 1rem; font-size: 0.8rem; opacity: 0.6;">
+                                    <span>283 shipments</span>
+                                    <span>•</span>
+                                    <span>↑ 4% vs last month</span>
+                                </div>
+                            </div>
+
+                            <!-- FREIGHT -->
+                            <div style="border-left: 5px solid rgba(255,255,255,0.25); padding-left: 1.5rem; cursor: pointer; transition: all 0.3s;"
+                                onmouseover="this.style.paddingLeft='2rem'"
+                                onmouseout="this.style.paddingLeft='1.5rem'">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                    <div>
+                                        <div style="font-size: 1.3rem; font-weight: 900;">FREIGHT</div>
+                                        <div
+                                            style="font-size: 0.7rem; opacity: 0.5; text-transform: uppercase; margin-top: 0.3rem;">
+                                            BULK SHIPMENT</div>
+                                    </div>
+                                    <div style="font-size: 2rem; font-weight: 900;">20%</div>
+                                </div>
+                                <div style="display: flex; gap: 1rem; font-size: 0.8rem; opacity: 0.6;">
+                                    <span>189 shipments</span>
+                                    <span>•</span>
+                                    <span>→ 0% vs last month</span>
+                                </div>
+                            </div>
+
+                            <!-- PRIORITY -->
+                            <div style="border-left: 5px solid rgba(255,255,255,0.15); padding-left: 1.5rem; cursor: pointer; transition: all 0.3s;"
+                                onmouseover="this.style.paddingLeft='2rem'"
+                                onmouseout="this.style.paddingLeft='1.5rem'">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                    <div>
+                                        <div style="font-size: 1.3rem; font-weight: 900;">PRIORITY</div>
+                                        <div
+                                            style="font-size: 0.7rem; opacity: 0.5; text-transform: uppercase; margin-top: 0.3rem;">
+                                            SAME DAY</div>
+                                    </div>
+                                    <div style="font-size: 2rem; font-weight: 900;">10%</div>
+                                </div>
+                                <div style="display: flex; gap: 1rem; font-size: 0.8rem; opacity: 0.6;">
+                                    <span>94 shipments</span>
+                                    <span>•</span>
+                                    <span>↑ 15% vs last month</span>
+                                </div>
+                            </div>
+
+                            <!-- Total Revenue -->
+                            <div
+                                style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <div
+                                            style="font-size: 0.7rem; opacity: 0.5; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">
+                                            TOTAL REVENUE</div>
+                                        <div style="font-size: 2.5rem; font-weight: 900; color: var(--c-kinetic);">
+                                            $1.8M
+                                        </div>
+                                    </div>
+                                    <div
+                                        style="background: rgba(255,60,0,0.1); padding: 1rem 1.5rem; border-left: 3px solid var(--c-kinetic);">
+                                        <div style="font-size: 1.5rem; font-weight: 900; color: var(--c-kinetic);">
+                                            +12%
+                                        </div>
+                                        <div
+                                            style="font-size: 0.6rem; opacity: 0.7; text-transform: uppercase; margin-top: 0.3rem;">
+                                            GROWTH</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-info">
+                <div class="footer-logo">speedEx</div>
+                <p style="opacity: 0.5; max-width: 300px; line-height: 1.6;">
+                    Redefining the physical world through neural-optimized logistics and atomic-precision
+                    distribution.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h4>System</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">Manifesto</a></li>
+                    <li><a href="services.html">Systems</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="contact.html">Node Access</a></li>
+                    <li><a href="login.html">Command Interface</a></li>
+                    <li><a href="#">Support Signal</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Protocol Terms</a></li>
+                    <li><a href="#">Privacy Mesh</a></li>
+                    <li><a href="#">Encryption Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center;">
+            <div>© 2026 speedEx // ALL_SYSTEMS_OPERATIONAL</div>
+            <div style="display: flex; gap: 1.5rem; align-items: center;">
+                <a href="https://instagram.com" target="_blank"
+                    style="color: inherit; text-decoration: none; opacity: 0.6; transition: var(--t-fast); display: inline-block;"
+                    onmouseover="this.style.opacity='1'; this.style.color='var(--c-kinetic)'"
+                    onmouseout="this.style.opacity='0.6'; this.style.color='inherit'" title="Instagram"><svg width="24"
+                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="square" stroke-linejoin="miter">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg></a>
+                <a href="https://facebook.com" target="_blank"
+                    style="color: inherit; text-decoration: none; opacity: 0.6; transition: var(--t-fast); display: inline-block;"
+                    onmouseover="this.style.opacity='1'; this.style.color='var(--c-kinetic)'"
+                    onmouseout="this.style.opacity='0.6'; this.style.color='inherit'" title="Facebook"><svg width="24"
+                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="square" stroke-linejoin="miter">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg></a>
+                <a href="https://youtube.com" target="_blank"
+                    style="color: inherit; text-decoration: none; opacity: 0.6; transition: var(--t-fast); display: inline-block;"
+                    onmouseover="this.style.opacity='1'; this.style.color='var(--c-kinetic)'"
+                    onmouseout="this.style.opacity='0.6'; this.style.color='inherit'" title="YouTube"><svg width="24"
+                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="square" stroke-linejoin="miter">
+                        <path
+                            d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                        </path>
+                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon>
+                    </svg></a>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="main.js"></script>
+    <script src="rtltoggle.js"></script>
+    <script>
+        // Dashboard Section Switching
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebarLinks = document.querySelectorAll('.sidebar-link[data-section]');
+            const mainContent = document.querySelector('.terminal-main');
+
+            // Store the original overview content
+            const originalContent = mainContent.innerHTML;
+
+            const sections = {
+                overview: originalContent,
+                shipments: `
+                    <div class="data-stream"></div>
+                    <h2 style="margin-bottom: 3rem;">ACTIVE_SHIPMENTS_TRACKING</h2>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
+                        <div style="background: rgba(255,255,255,0.05); padding: 2rem; border-left: 5px solid var(--c-kinetic);">
+                            <div style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 0.5rem;">TRACKING_ID</div>
+                            <div style="font-size: 1.5rem; font-weight: 900; margin-bottom: 1rem;">#SPX-44291</div>
+                            <div style="opacity: 0.7; margin-bottom: 1rem;">Tokyo → Los Angeles</div>
+                            <div style="color: var(--c-kinetic); font-weight: 900;">[ IN_TRANSIT ] 68%</div>
+                            <div style="height: 4px; background: rgba(255,255,255,0.1); margin-top: 0.5rem;">
+                                <div style="width: 68%; height: 100%; background: var(--c-kinetic);"></div>
+                            </div>
+                        </div>
+                        
+                        <div style="background: rgba(255,255,255,0.05); padding: 2rem; border-left: 5px solid white;">
+                            <div style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 0.5rem;">TRACKING_ID</div>
+                            <div style="font-size: 1.5rem; font-weight: 900; margin-bottom: 1rem;">#SPX-44188</div>
+                            <div style="opacity: 0.7; margin-bottom: 1rem;">Berlin → Singapore</div>
+                            <div style="color: white; font-weight: 900;">[ DELIVERED ]</div>
+                            <div style="height: 4px; background: rgba(255,255,255,0.1); margin-top: 0.5rem;">
+                                <div style="width: 100%; height: 100%; background: white;"></div>
+                            </div>
+                        </div>
+                        
+                        <div style="background: rgba(255,255,255,0.05); padding: 2rem; border-left: 5px solid var(--c-kinetic);">
+                            <div style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 0.5rem;">TRACKING_ID</div>
+                            <div style="font-size: 1.5rem; font-weight: 900; margin-bottom: 1rem;">#SPX-44055</div>
+                            <div style="opacity: 0.7; margin-bottom: 1rem;">London → Dubai</div>
+                            <div style="color: var(--c-kinetic); font-weight: 900;">[ IN_TRANSIT ] 42%</div>
+                            <div style="height: 4px; background: rgba(255,255,255,0.1); margin-top: 0.5rem;">
+                                <div style="width: 42%; height: 100%; background: var(--c-kinetic);"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin-bottom: 2rem;">PACKAGE_HISTORY</h3>
+                    <table class="node-table">
+                        <thead>
+                            <tr>
+                                <th>Tracking_ID</th>
+                                <th>Route</th>
+                                <th>Status</th>
+                                <th>ETA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#SPX-44291</td>
+                                <td>Tokyo → LA</td>
+                                <td style="color: var(--c-kinetic);">[ IN_TRANSIT ]</td>
+                                <td>14:22:00</td>
+                            </tr>
+                            <tr>
+                                <td>#SPX-44188</td>
+                                <td>Berlin → Singapore</td>
+                                <td>[ DELIVERED ]</td>
+                                <td>--:--:--</td>
+                            </tr>
+                            <tr>
+                                <td>#SPX-44055</td>
+                                <td>London → Dubai</td>
+                                <td style="color: var(--c-kinetic);">[ IN_TRANSIT ]</td>
+                                <td>22:15:00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                `,
+                notifications: `
+                    <div class="data-stream"></div>
+                    <h2 style="margin-bottom: 3rem;">NOTIFICATION_STREAM</h2>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div style="background: rgba(255,60,0,0.1); padding: 2rem; border-left: 5px solid var(--c-kinetic);">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                                <div style="font-weight: 900; color: var(--c-kinetic);">[ URGENT ] Shipment Delay</div>
+                                <div style="opacity: 0.5; font-size: 0.8rem;">2 hours ago</div>
+                            </div>
+                            <p style="opacity: 0.8;">Package #SPX-44291 has been delayed due to weather conditions. New ETA: 16:45 UTC.</p>
+                        </div>
+                        
+                        <div style="background: rgba(255,255,255,0.05); padding: 2rem; border-left: 5px solid white;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                                <div style="font-weight: 900;">[ INFO ] Delivery Complete</div>
+                                <div style="opacity: 0.5; font-size: 0.8rem;">5 hours ago</div>
+                            </div>
+                            <p style="opacity: 0.8;">Your package #SPX-44188 has been successfully delivered to the destination.</p>
+                        </div>
+                        
+                        <div style="background: rgba(255,255,255,0.05); padding: 2rem; border-left: 5px solid white;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                                <div style="font-weight: 900;">[ INFO ] System Update</div>
+                                <div style="opacity: 0.5; font-size: 0.8rem;">1 day ago</div>
+                            </div>
+                            <p style="opacity: 0.8;">New tracking features have been added to your dashboard. Check them out in the Active Shipments section.</p>
+                        </div>
+                    </div>
+                `,
+                settings: `
+                    <div class="data-stream"></div>
+                    <h2 style="margin-bottom: 3rem;">ACCOUNT_SETTINGS</h2>
+                    
+                    <div style="max-width: 600px;">
+                        <div style="margin-bottom: 3rem;">
+                            <h3 style="margin-bottom: 1.5rem;">PROFILE_INFORMATION</h3>
+                            <div style="background: rgba(255,255,255,0.05); padding: 2rem; border: 1px solid rgba(255,255,255,0.1);">
+                                <div style="margin-bottom: 1.5rem;">
+                                    <div style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 0.5rem;">USER_ID</div>
+                                    <div style="font-weight: 900;">88219-X</div>
+                                </div>
+                                <div style="margin-bottom: 1.5rem;">
+                                    <div style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 0.5rem;">EMAIL_NODE</div>
+                                    <div style="opacity: 0.8;">user@speedex.sys</div>
+                                </div>
+                                <div>
+                                    <div style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 0.5rem;">ACCOUNT_STATUS</div>
+                                    <div style="color: var(--c-kinetic); font-weight: 900;">[ ACTIVE ]</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: 3rem;">
+                            <h3 style="margin-bottom: 1.5rem;">NOTIFICATION_PREFERENCES</h3>
+                            <div style="background: rgba(255,255,255,0.05); padding: 2rem; border: 1px solid rgba(255,255,255,0.1);">
+                                <label style="display: flex; align-items: center; margin-bottom: 1rem; cursor: pointer;">
+                                    <input type="checkbox" checked style="margin-right: 1rem;">
+                                    <span>Email notifications for shipment updates</span>
+                                </label>
+                                <label style="display: flex; align-items: center; margin-bottom: 1rem; cursor: pointer;">
+                                    <input type="checkbox" checked style="margin-right: 1rem;">
+                                    <span>SMS alerts for urgent updates</span>
+                                </label>
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" style="margin-right: 1rem;">
+                                    <span>Marketing communications</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button class="nav-btn" style="width: 100%; padding: 1.5rem;">SAVE_CHANGES</button>
+                    </div>
+                `
+            };
+
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const section = link.getAttribute('data-section');
+
+                    // Update active state
+                    sidebarLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+
+                    // Update content
+                    if (sections[section]) {
+                        mainContent.innerHTML = sections[section];
+                    }
+                });
+            });
+
+            // Sidebar Toggle Logic
+            const menuToggle = document.getElementById('menu-toggle');
+            const navHamburger = document.getElementById('nav-hamburger');
+            const sidebar = document.querySelector('.terminal-sidebar');
+
+            const toggleSidebar = () => {
+                sidebar.classList.toggle('hidden');
+                sidebar.classList.toggle('visible'); // For mobile
+            };
+
+            if (menuToggle) menuToggle.addEventListener('click', toggleSidebar);
+            if (navHamburger) navHamburger.addEventListener('click', toggleSidebar);
+        });
+    </script>
+</body>
+
+</html>

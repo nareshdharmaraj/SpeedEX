@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login // speedEx</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="vertical-text">EST. 2026 // speedEx FLOW // GLOBAL NODES</div>
+
+    <nav>
+        <div class="nav-module">
+            <div class="nav-logo" onclick="location.href='index.html'" style="cursor: pointer;">speedEx</div>
+        </div>
+        <div class="nav-module nav-links">
+            <select class="nav-select" onchange="if(this.value) location.href=this.value">
+                <option value="" disabled selected>Home</option>
+                <option value="index.html">Home 1 // Main Grid</option>
+                <option value="index2.html">Home 2 // Ghost Protocol</option>
+            </select>
+            <a href="about.html" data-id="RT_02">About</a>
+            <a href="services.html" data-id="RT_03">Services</a>
+            <a href="contact.html" data-id="RT_04">Contact</a>
+            <select class="nav-select" onchange="if(this.value) location.href=this.value">
+                <option value="" disabled selected>Dashboards</option>
+                <option value="dashboard-user.html">User // Node Terminal</option>
+                <option value="dashboard-admin.html">Admin // Core Logic</option>
+            </select>
+        </div>
+        <div class="nav-module nav-actions">
+            <button id="rtl-toggle" class="icon-btn">🌐</button>
+            <button id="theme-toggle" class="icon-btn">🌗</button>
+            <button class="nav-btn" onclick="location.href='login.html'">LOGIN</button>
+        </div>
+    </nav>
+
+    <div class="auth-wrapper">
+        <div class="bg-pattern"></div>
+        <div class="auth-card">
+            <div class="auth-title">Welcome<br>Back.</div>
+            <form action="dashboard-user.html">
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" placeholder="name@company.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" placeholder="••••••••" required>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; cursor: pointer;">
+                        <input type="checkbox" style="accent-color: var(--c-kinetic);"> Remember Me
+                    </label>
+                    <a href="#" style="font-size: 0.8rem; color: inherit; opacity: 0.6; text-decoration: none;">Forgot
+                        Password?</a>
+                </div>
+                <button type="submit" class="auth-btn">Authorize Access</button>
+            </form>
+
+            <div class="auth-footer">
+                <span>New operator?</span>
+                <a href="register.html">Request Protocol</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="rtltoggle.js"></script>
+</body>
+
+</html>

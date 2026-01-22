@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYSTEMS // speedEx</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="vertical-text">EST. 2026 // speedEx FLOW // GLOBAL NODES</div>
+
+    <nav>
+        <div class="nav-module">
+            <div class="nav-logo" onclick="location.href='index.html'" style="cursor: pointer;">speedEx</div>
+        </div>
+        <div class="nav-module nav-links">
+            <select class="nav-select" onchange="if(this.value) location.href=this.value">
+                <option value="" disabled selected>Home</option>
+                <option value="index.html">Home 1 // Main Grid</option>
+                <option value="index2.html">Home 2 // Ghost Protocol</option>
+            </select>
+            <a href="about.html" data-id="RT_02">About</a>
+            <a href="services.html" data-id="RT_03">Services</a>
+            <a href="contact.html" data-id="RT_04">Contact</a>
+            <select class="nav-select" onchange="if(this.value) location.href=this.value">
+                <option value="" disabled selected>Dashboards</option>
+                <option value="dashboard-user.html">User // Node Terminal</option>
+                <option value="dashboard-admin.html">Admin // Core Logic</option>
+            </select>
+        </div>
+        <div class="nav-module nav-actions">
+            <button id="rtl-toggle" class="icon-btn">🌐</button>
+            <button id="theme-toggle" class="icon-btn">🌗</button>
+            <button class="nav-btn" onclick="location.href='login.html'">LOGIN</button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section-speed-ex" style="padding-top: 20vh;">
+            <div class="big-text" style="font-size: 8vw;">SERVICES</div>
+
+            <div style="margin-top: 10vh; display: flex; flex-direction: column; gap: 5vh;">
+                <!-- System 1 -->
+                <div class="kinetic-card"
+                    style="display: grid; grid-template-columns: 1fr 2fr 1fr; border-top: 10px solid var(--c-obsidian);">
+                    <div style="font-weight: 900; font-size: 1.5rem;">[ ALPHA ]</div>
+                    <div>
+                        <h3 style="font-size: 2rem; text-transform: uppercase;">Standard Freight</h3>
+                        <p style="font-size: 1rem; color: var(--text-secondary);">3-5 Day Domestic & Global Delivery.
+                            Reliable, cost-effective shipping for bulk assets.</p>
+                    </div>
+                    <div style="text-align: right; font-size: 1.5rem; font-weight: 900;">$9.00</div>
+                </div>
+
+                <!-- System 2 -->
+                <div class="kinetic-card"
+                    style="display: grid; grid-template-columns: 1fr 2fr 1fr; border-top: 10px solid var(--c-kinetic); color: var(--c-kinetic);">
+                    <div style="font-weight: 900; font-size: 2rem;">[ BETA ]</div>
+                    <div>
+                        <h3 style="font-size: 3rem; text-transform: uppercase;">speedEx Express</h3>
+                        <p style="font-size: 1.2rem;">Next-Day Guaranteed Delivery. Priority air-routing and immediate
+                            destination handling.</p>
+                    </div>
+                    <div style="text-align: right; font-size: 2rem; font-weight: 900;">$24.00</div>
+                </div>
+
+                <!-- System 3 -->
+                <div class="kinetic-card"
+                    style="display: grid; grid-template-columns: 1fr 2fr 1fr; border-top: 10px solid var(--c-obsidian);">
+                    <div style="font-weight: 900; font-size: 2rem;">[ OMEGA ]</div>
+                    <div>
+                        <h3 style="font-size: 3rem; text-transform: uppercase;">Same-Day Pulse</h3>
+                        <p style="font-size: 1.2rem; color: var(--text-secondary);">Sub-6 Hour Local Delivery. Available
+                            in 48 Mega-Cities for critical asset transfers.</p>
+                    </div>
+                    <div style="text-align: right; font-size: 2rem; font-weight: 900;">CUSTOM</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-speed-ex">
+            <h2 class="big-text" style="font-size: 6vw;">SPECS</h2>
+            <div
+                style="margin-top: 10vh; display: grid; grid-template-columns: repeat(2, 1fr); border: 2px solid var(--c-obsidian); background: var(--c-obsidian); gap: 2px;">
+                <div style="background: var(--c-paper); padding: 5rem;">
+                    <h4 style="letter-spacing: 0.3em; opacity: 0.5; margin-bottom: 2rem;">DATA_INTEGRATION</h4>
+                    <p style="font-size: 1.2rem; line-height: 1.2;">Full API access via encrypted neural channels.
+                        Real-time telemetry at 120Hz frequency. Custom webhook triggers for all atomic state changes.
+                    </p>
+                </div>
+                <div style="background: var(--c-paper); padding: 5rem;">
+                    <h4 style="letter-spacing: 0.3em; opacity: 0.5; margin-bottom: 2rem;">SECURITY_LAYER</h4>
+                    <p style="font-size: 1.5rem; line-height: 1.2;">Every asset is wrapped in a cryptographic seal.
+                        Quantum-resistant tracking prevents any unauthorized node interference or data leaks.</p>
+                </div>
+                <div style="background: var(--c-paper); padding: 5rem;">
+                    <h4 style="letter-spacing: 0.3em; opacity: 0.5; margin-bottom: 2rem;">NODE_VELOCITY</h4>
+                    <p style="font-size: 1.5rem; line-height: 1.2;">Adaptive speed adjustment based on network
+                        congestion. Our nodes utilize the path of least resistance to ensure peak efficiency during rush
+                        hours.</p>
+                </div>
+                <div style="background: var(--c-paper); padding: 5rem;">
+                    <h4 style="letter-spacing: 0.3em; opacity: 0.5; margin-bottom: 2rem;">GLOBAL_REACH</h4>
+                    <p style="font-size: 1.5rem; line-height: 1.2;">Access to over 12,000 deep-tier nodes across all
+                        major urban sectors and industrial zones. No location is outside the speedEx loop.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-speed-ex"
+            style="padding: 0; height: 80vh; position: relative; overflow: hidden; background: var(--c-obsidian);">
+            <img src="kinetic_motion_abstract.png" alt="Lifecycle"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.6; filter: grayscale(1) sepia(0.5) hue-rotate(320deg);">
+            <div
+                style="position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(20px); padding: 10vh 5vw; color: white; display: flex; flex-direction: column; justify-content: center;">
+                <h2 style="font-size: 4rem; line-height: 0.8; margin-bottom: 4rem;">ASSET<br>LIFECYCLE</h2>
+                <div style="display: flex; flex-direction: column; gap: 3rem;">
+                    <div>
+                        <h4 style="color: var(--c-kinetic);">[ 01 ] INGESTION</h4>
+                        <p style="opacity: 0.7;">Physical asset is digitized and assigned a unique neural ID.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--c-kinetic);">[ 02 ] ROUTING</h4>
+                        <p style="opacity: 0.7;">Predictive algorithms determine the most efficient path across nodes.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--c-kinetic);">[ 03 ] TRANSFER</h4>
+                        <p style="opacity: 0.7;">High-velocity transit via specialized speedEx transport units.</p>
+                    </div>
+                    <div style="border-top: 1px solid var(--c-kinetic); padding-top: 2rem;">
+                        <h4 style="color: var(--c-kinetic);">[ 04 ] RESOLUTION</h4>
+                        <p style="opacity: 0.7;">Final delivery and verification of atomic integrity at destination.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: Enterprise Pulse -->
+        <section class="section-speed-ex">
+            <div class="container">
+                <h2 class="big-text" style="font-size: 6vw;">ENTERPRISE_PULSE</h2>
+                <p style="font-size: 2rem; max-width: 800px; margin-bottom: 5rem;">For organizations requiring total
+                    control over their physical supply chain. We build private node-clusters and dedicated
+                    air-corridors.</p>
+
+                <div
+                    style="width: 100%; height: 50vh; margin-bottom: 5rem; overflow: hidden; border: 1px solid var(--c-obsidian);">
+                    <img src="enterprise_operations.png" alt="Enterprise Operations"
+                        style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.1);">
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
+                    <div style="padding: 4rem; border: 2px solid var(--c-obsidian);">
+                        <h3 style="font-size: 3rem; margin-bottom: 2rem;">PRIVATE_GRID</h3>
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; opacity: 0.8;">
+                            <li>+ Dedicated Autonomous Courier Fleet</li>
+                            <li>+ Custom Node Infrastructure Deployment</li>
+                            <li>+ Hardened Cryptographic Channels</li>
+                            <li>+ White-Glove Handler Protocol</li>
+                        </ul>
+                    </div>
+                    <div style="padding: 4rem; background: var(--c-obsidian); color: var(--c-paper);">
+                        <h3 style="font-size: 3rem; margin-bottom: 2rem; color: var(--c-kinetic);">COLD_CHAIN_SYNC</h3>
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; opacity: 0.8;">
+                            <li>+ Active Thermal Management (-80°C to +40°C)</li>
+                            <li>+ Real-time Molecular Stability Tracking</li>
+                            <li>+ Priority Hazardous Material Clearance</li>
+                            <li>+ Bio-Metric Receiving Authorization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: Comparison Matrix -->
+        <section class="section-speed-ex" style="background: var(--c-subtle);">
+            <div class="container">
+                <h2 style="font-size: 4rem; margin-bottom: 5rem;">SYSTEM_COMPARISON</h2>
+                <table style="width: 100%; border-collapse: collapse; font-size: 1.2rem;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--c-obsidian);">
+                            <th style="padding: 2rem; text-align: left;">FEATURE</th>
+                            <th style="padding: 2rem; text-align: center;">ALPHA</th>
+                            <th style="padding: 2rem; text-align: center; color: var(--c-kinetic);">BETA</th>
+                            <th style="padding: 2rem; text-align: center;">OMEGA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(0,0,0,0.1);">
+                            <td style="padding: 2rem;">DELIVERY_WINDOW</td>
+                            <td style="padding: 2rem; text-align: center;">3-5 DAYS</td>
+                            <td style="padding: 2rem; text-align: center;">24 HOURS</td>
+                            <td style="padding: 2rem; text-align: center;">6 HOURS</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(0,0,0,0.1);">
+                            <td style="padding: 2rem;">GPS_ACCURACY</td>
+                            <td style="padding: 2rem; text-align: center;">100M</td>
+                            <td style="padding: 2rem; text-align: center;">5M</td>
+                            <td style="padding: 2rem; text-align: center;">0.5M</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(0,0,0,0.1);">
+                            <td style="padding: 2rem;">INSURANCE_COVER</td>
+                            <td style="padding: 2rem; text-align: center;">UP TO $5K</td>
+                            <td style="padding: 2rem; text-align: center;">UP TO $50K</td>
+                            <td style="padding: 2rem; text-align: center;">UNLIMITED</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(0,0,0,0.1);">
+                            <td style="padding: 2rem;">SECURE_HANDOFF</td>
+                            <td style="padding: 2rem; text-align: center;">STANDARD</td>
+                            <td style="padding: 2rem; text-align: center;">ENCRYPTED</td>
+                            <td style="padding: 2rem; text-align: center;">BIOMETRIC</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- New Section: Customer Success Stories -->
+        <section class="section-speed-ex">
+            <div class="container">
+                <h2 class="big-text" style="font-size: 8vw; margin-bottom: 3rem;">CLIENT_FEEDBACK</h2>
+                <p style="font-size: 1.5rem; max-width: 700px; margin-bottom: 8rem; opacity: 0.7;">Real transmission
+                    logs from verified nodes in the speedEx network.</p>
+
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 4rem;">
+                    <div style="border: 2px solid var(--c-obsidian); padding: 4rem; position: relative;">
+                        <div
+                            style="position: absolute; top: -1.5rem; left: 2rem; background: var(--c-paper); padding: 0 1rem; font-weight: 900; color: var(--c-kinetic);">
+                            [ VERIFIED ]</div>
+                        <p style="font-size: 1.5rem; line-height: 1.6; margin-bottom: 2rem;">"The Alpha tier transformed
+                            our quarterly distribution cycles. 47% reduction in transit time across continental
+                            networks. Efficiency at industrial scale."</p>
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--c-obsidian); padding-top: 2rem;">
+                            <div>
+                                <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem;">SARAH CHEN</h4>
+                                <p style="opacity: 0.5;">Director_Logistics // TechFlow Industries</p>
+                            </div>
+                            <div style="font-size: 3rem; opacity: 0.2;">★★★★★</div>
+                        </div>
+                    </div>
+
+                    <div
+                        style="background: var(--c-obsidian); color: var(--c-paper); padding: 4rem; position: relative;">
+                        <div
+                            style="position: absolute; top: -1.5rem; left: 2rem; background: var(--c-kinetic); padding: 0 1rem; font-weight: 900; color: var(--c-obsidian);">
+                            [ BETA_USER ]</div>
+                        <p style="font-size: 1.5rem; line-height: 1.6; margin-bottom: 2rem;">"speedEx Express handles
+                            our critical medical deliveries with millisecond precision. Zero failures in 18 months. The
+                            real-time telemetry API is exceptional."</p>
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 2rem;">
+                            <div>
+                                <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--c-kinetic);">DR.
+                                    MARCUS RIVERA</h4>
+                                <p style="opacity: 0.5;">Chief_Operations // MediCore Global</p>
+                            </div>
+                            <div style="font-size: 3rem; opacity: 0.2;">★★★★★</div>
+                        </div>
+                    </div>
+
+                    <div style="border: 2px solid var(--c-obsidian); padding: 4rem; position: relative;">
+                        <div
+                            style="position: absolute; top: -1.5rem; left: 2rem; background: var(--c-paper); padding: 0 1rem; font-weight: 900; color: var(--c-kinetic);">
+                            [ OMEGA_TIER ]</div>
+                        <p style="font-size: 1.5rem; line-height: 1.6; margin-bottom: 2rem;">"Same-Day Pulse is our
+                            emergency protocol. Sub-3 hour diamond transfers across 12 metropolitan zones. The biometric
+                            handoff gives us complete peace of mind."</p>
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--c-obsidian); padding-top: 2rem;">
+                            <div>
+                                <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem;">JAMES BLACKWOOD</h4>
+                                <p style="opacity: 0.5;">Security_Director // Vault Systems Inc</p>
+                            </div>
+                            <div style="font-size: 3rem; opacity: 0.2;">★★★★★</div>
+                        </div>
+                    </div>
+
+                    <div
+                        style="background: var(--c-kinetic); color: var(--c-obsidian); padding: 4rem; position: relative;">
+                        <div
+                            style="position: absolute; top: -1.5rem; left: 2rem; background: var(--c-obsidian); color: var(--c-kinetic); padding: 0 1rem; font-weight: 900;">
+                            [ ENTERPRISE ]</div>
+                        <p style="font-size: 1.5rem; line-height: 1.6; margin-bottom: 2rem;">"Private Grid integration
+                            was seamless. Our dedicated fleet handles 2,400+ daily routes with 99.97% on-time delivery.
+                            Game-changing infrastructure."</p>
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(0,0,0,0.2); padding-top: 2rem;">
+                            <div>
+                                <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem;">YUKI TANAKA</h4>
+                                <p style="opacity: 0.7;">VP_Supply_Chain // NexGen Robotics</p>
+                            </div>
+                            <div style="font-size: 3rem; opacity: 0.2;">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: Industry Solutions -->
+        <section class="section-speed-ex" style="background: var(--c-subtle);">
+            <div class="container">
+                <h2 class="big-text" style="font-size: 7vw; margin-bottom: 3rem;">VERTICAL_OPTIMIZATION</h2>
+                <p style="font-size: 1.8rem; max-width: 900px; margin-bottom: 8rem;">Specialized routing protocols and
+                    custom workflows engineered for mission-critical industry sectors.</p>
+
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem;">
+                    <div class="kinetic-card" style="padding: 4rem; border-top: 5px solid var(--c-kinetic);">
+                        <div style="font-size: 4rem; margin-bottom: 2rem;">⚕</div>
+                        <h3 style="font-size: 2rem; margin-bottom: 1.5rem; text-transform: uppercase;">MEDICAL</h3>
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; opacity: 0.7;">
+                            <li>+ Controlled Temperature Transit</li>
+                            <li>+ FDA-Compliance Documentation</li>
+                            <li>+ 24/7 Pharmacist Hotline</li>
+                            <li>+ Chain-of-Custody Blockchain</li>
+                        </ul>
+                    </div>
+
+                    <div class="kinetic-card" style="padding: 4rem; border-top: 5px solid var(--c-obsidian);">
+                        <div style="font-size: 4rem; margin-bottom: 2rem;">⚡</div>
+                        <h3 style="font-size: 2rem; margin-bottom: 1.5rem; text-transform: uppercase;">TECHNOLOGY</h3>
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; opacity: 0.7;">
+                            <li>+ ESD-Protected Packaging</li>
+                            <li>+ Server Rack Configurations</li>
+                            <li>+ White-Room Assembly Delivery</li>
+                            <li>+ Same-Day RMA Processing</li>
+                        </ul>
+                    </div>
+
+                    <div class="kinetic-card" style="padding: 4rem; border-top: 5px solid var(--c-kinetic);">
+                        <div style="font-size: 4rem; margin-bottom: 2rem;">◆</div>
+                        <h3 style="font-size: 2rem; margin-bottom: 1.5rem; text-transform: uppercase;">LUXURY</h3>
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; opacity: 0.7;">
+                            <li>+ Armed Security Escort</li>
+                            <li>+ Vault-to-Vault Transfer</li>
+                            <li>+ Discrete Unmarked Vehicles</li>
+                            <li>+ Gemological Verification</li>
+                        </ul>
+                    </div>
+
+                    <div class="kinetic-card" style="padding: 4rem; border-top: 5px solid var(--c-obsidian);">
+                        <div style="font-size: 4rem; margin-bottom: 2rem;">⚙</div>
+                        <h3 style="font-size: 2rem; margin-bottom: 1.5rem; text-transform: uppercase;">MANUFACTURING
+                        </h3>
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; opacity: 0.7;">
+                            <li>+ Just-In-Time Synchronization</li>
+                            <li>+ Heavy Machinery Logistics</li>
+                            <li>+ Cross-Border Customs Fast-Track</li>
+                            <li>+ Factory Floor Direct Delivery</li>
+                        </ul>
+                    </div>
+
+                    <div class="kinetic-card" style="padding: 4rem; border-top: 5px solid var(--c-kinetic);">
+                        <div style="font-size: 4rem; margin-bottom: 2rem;">📊</div>
+                        <h3 style="font-size: 2rem; margin-bottom: 1.5rem; text-transform: uppercase;">E-COMMERCE</h3>
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; opacity: 0.7;">
+                            <li>+ Shopify/WooCommerce APIs</li>
+                            <li>+ Multi-Warehouse Orchestration</li>
+                            <li>+ Returns Management Portal</li>
+                            <li>+ Predictive Demand Routing</li>
+                        </ul>
+                    </div>
+
+                    <div class="kinetic-card" style="padding: 4rem; border-top: 5px solid var(--c-obsidian);">
+                        <div style="font-size: 4rem; margin-bottom: 2rem;">🎨</div>
+                        <h3 style="font-size: 2rem; margin-bottom: 1.5rem; text-transform: uppercase;">ART & MEDIA</h3>
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; opacity: 0.7;">
+                            <li>+ Climate-Controlled Art Crates</li>
+                            <li>+ Museum-Grade Handling</li>
+                            <li>+ Insurance Appraisal Services</li>
+                            <li>+ Exhibition Installation Support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: Technology Infrastructure -->
+        <section class="section-speed-ex">
+            <div class="container">
+                <h2 class="big-text" style="font-size: 8vw; margin-bottom: 2rem;">TECH_STACK</h2>
+                <p style="font-size: 1.5rem; max-width: 800px; margin-bottom: 8rem; opacity: 0.7;">The neural
+                    architecture powering speedEx's quantum-optimized distribution network.</p>
+
+                <div style="display: flex; flex-direction: column; gap: 0;">
+                    <div
+                        style="display: grid; grid-template-columns: 1fr 3fr; border-bottom: 2px solid var(--c-obsidian);">
+                        <div
+                            style="background: var(--c-obsidian); color: var(--c-paper); padding: 3rem; font-weight: 900; font-size: 1.5rem;">
+                            ROUTING_ENGINE</div>
+                        <div style="padding: 3rem; display: flex; align-items: center;">
+                            <p style="font-size: 1.2rem; opacity: 0.8;">Proprietary pathfinding algorithms using neural
+                                network predictions to optimize 12,000+ simultaneous routes in real-time with 99.99%
+                                accuracy.</p>
+                        </div>
+                    </div>
+
+                    <div
+                        style="display: grid; grid-template-columns: 1fr 3fr; border-bottom: 2px solid var(--c-obsidian);">
+                        <div
+                            style="background: var(--c-kinetic); color: var(--c-obsidian); padding: 3rem; font-weight: 900; font-size: 1.5rem;">
+                            TRACKING_CORE</div>
+                        <div style="padding: 3rem; display: flex; align-items: center;">
+                            <p style="font-size: 1.2rem; opacity: 0.8;">Multi-constellation GPS/GLONASS/Galileo fusion
+                                with quantum-encrypted telemetry providing sub-meter precision across all altitude
+                                layers.</p>
+                        </div>
+                    </div>
+
+                    <div
+                        style="display: grid; grid-template-columns: 1fr 3fr; border-bottom: 2px solid var(--c-obsidian);">
+                        <div
+                            style="background: var(--c-obsidian); color: var(--c-paper); padding: 3rem; font-weight: 900; font-size: 1.5rem;">
+                            SECURITY_MESH</div>
+                        <div style="padding: 3rem; display: flex; align-items: center;">
+                            <p style="font-size: 1.2rem; opacity: 0.8;">End-to-end AES-256 encryption with blockchain
+                                immutability. Every handoff generates cryptographic proof stored on distributed ledger.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        style="display: grid; grid-template-columns: 1fr 3fr; border-bottom: 2px solid var(--c-obsidian);">
+                        <div
+                            style="background: var(--c-kinetic); color: var(--c-obsidian); padding: 3rem; font-weight: 900; font-size: 1.5rem;">
+                            API_GATEWAY</div>
+                        <div style="padding: 3rem; display: flex; align-items: center;">
+                            <p style="font-size: 1.2rem; opacity: 0.8;">RESTful and GraphQL endpoints with 120Hz webhook
+                                streams. SDKs available for Python, JavaScript, Go, and Rust with comprehensive
+                                documentation.</p>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 3fr;">
+                        <div
+                            style="background: var(--c-obsidian); color: var(--c-paper); padding: 3rem; font-weight: 900; font-size: 1.5rem;">
+                            FLEET_AUTONOMY</div>
+                        <div style="padding: 3rem; display: flex; align-items: center;">
+                            <p style="font-size: 1.2rem; opacity: 0.8;">Self-driving vehicle integration with L4
+                                autonomy in 48 metro zones. Hybrid human-AI dispatch for optimal decision-making at
+                                scale.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-info">
+                <div class="footer-logo">speedEx</div>
+                <p style="opacity: 0.5; max-width: 300px; line-height: 1.6;">
+                    Redefining the physical world through neural-optimized logistics and atomic-precision distribution.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h4>System</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">Manifesto</a></li>
+                    <li><a href="services.html">Systems</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="contact.html">Node Access</a></li>
+                    <li><a href="login.html">Command Interface</a></li>
+                    <li><a href="#">Support Signal</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Protocol Terms</a></li>
+                    <li><a href="#">Privacy Mesh</a></li>
+                    <li><a href="#">Encryption Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center;">
+            <div>© 2026 speedEx // ALL_SYSTEMS_OPERATIONAL</div>
+            <div style="display: flex; gap: 1.5rem; align-items: center;">
+                <a href="https://instagram.com" target="_blank"
+                    style="color: inherit; text-decoration: none; opacity: 0.6; transition: var(--t-fast); display: inline-block;"
+                    onmouseover="this.style.opacity='1'; this.style.color='var(--c-kinetic)'"
+                    onmouseout="this.style.opacity='0.6'; this.style.color='inherit'" title="Instagram"><svg width="24"
+                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="square" stroke-linejoin="miter">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg></a>
+                <a href="https://facebook.com" target="_blank"
+                    style="color: inherit; text-decoration: none; opacity: 0.6; transition: var(--t-fast); display: inline-block;"
+                    onmouseover="this.style.opacity='1'; this.style.color='var(--c-kinetic)'"
+                    onmouseout="this.style.opacity='0.6'; this.style.color='inherit'" title="Facebook"><svg width="24"
+                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="square" stroke-linejoin="miter">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg></a>
+                <a href="https://youtube.com" target="_blank"
+                    style="color: inherit; text-decoration: none; opacity: 0.6; transition: var(--t-fast); display: inline-block;"
+                    onmouseover="this.style.opacity='1'; this.style.color='var(--c-kinetic)'"
+                    onmouseout="this.style.opacity='0.6'; this.style.color='inherit'" title="YouTube"><svg width="24"
+                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="square" stroke-linejoin="miter">
+                        <path
+                            d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                        </path>
+                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon>
+                    </svg></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="rtltoggle.js"></script>
+</body>
+
+</html>

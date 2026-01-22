@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NODE // CONNECTION</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="vertical-text">EST. 2026 // speedEx FLOW // GLOBAL NODES</div>
+
+    <nav>
+        <div class="nav-module">
+            <div class="nav-logo" onclick="location.href='index.html'" style="cursor: pointer;">speedEx</div>
+        </div>
+        <div class="nav-module nav-links">
+            <select class="nav-select" onchange="if(this.value) location.href=this.value">
+                <option value="" disabled selected>Home</option>
+                <option value="index.html">Home 1 // Main Grid</option>
+                <option value="index2.html">Home 2 // Ghost Protocol</option>
+            </select>
+            <a href="about.html" data-id="RT_02">About</a>
+            <a href="services.html" data-id="RT_03">Services</a>
+            <a href="contact.html" data-id="RT_04">Contact</a>
+            <select class="nav-select" onchange="if(this.value) location.href=this.value">
+                <option value="" disabled selected>Dashboards</option>
+                <option value="dashboard-user.html">User // Node Terminal</option>
+                <option value="dashboard-admin.html">Admin // Core Logic</option>
+            </select>
+        </div>
+        <div class="nav-module nav-actions">
+            <button id="rtl-toggle" class="icon-btn">🌐</button>
+            <button id="theme-toggle" class="icon-btn">🌗</button>
+            <button class="nav-btn" onclick="location.href='login.html'">LOGIN</button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section-speed-ex"
+            style="display: grid; grid-template-columns: 1fr 1fr; gap: 10vw; padding-top: 20vh;">
+            <div>
+                <div class="big-text" style="font-size: 8vw;">JOIN</div>
+                <div class="big-text" style="color: var(--c-kinetic); font-size: 8vw;">THE</div>
+                <div class="big-text" style="font-size: 8vw;">FLOW</div>
+
+                <div style="margin-top: 5rem; display: flex; flex-direction: column; gap: 2rem;">
+                    <div>
+                        <h4 style="opacity: 0.5;">FREQUENCY</h4>
+                        <p style="font-size: 2rem; font-weight: 900;">+1 [000] speedEx</p>
+                    </div>
+                    <div>
+                        <h4 style="opacity: 0.5;">SIGNAL</h4>
+                        <p style="font-size: 2rem; font-weight: 900;">FLOW@speedEx.SYS</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding-top: 5vh;">
+                <form>
+                    <div style="margin-bottom: 3rem;">
+                        <input type="text" placeholder="NODE_NAME"
+                            style="width: 100%; padding: 2rem; background: var(--c-obsidian); color: var(--c-paper); border: none; font-family: inherit; font-weight: 900; font-size: 1.5rem;">
+                    </div>
+                    <div style="margin-bottom: 3rem;">
+                        <input type="email" placeholder="SIGNAL_ID"
+                            style="width: 100%; padding: 2rem; background: var(--c-obsidian); color: var(--c-paper); border: none; font-family: inherit; font-weight: 900; font-size: 1.5rem;">
+                    </div>
+                    <div style="margin-bottom: 3rem;">
+                        <textarea placeholder="MESSAGE_TRANSMISSION"
+                            style="width: 100%; padding: 2rem; background: var(--c-obsidian); color: var(--c-paper); border: none; font-family: inherit; font-weight: 900; font-size: 1.5rem; height: 300px; resize: none;"></textarea>
+                    </div>
+                    <button class="big-text interactive"
+                        style="background: none; border: 5px solid var(--c-obsidian); color: var(--c-obsidian); width: 100%; text-align: center; cursor: pointer; font-size: 5vw; padding: 2rem;">[
+                        SEND ]</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="section-speed-ex">
+            <h2 class="big-text" style="font-size: 10vw;">HUBS</h2>
+            <div style="margin-top: 5vh; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5vw;">
+                <div>
+                    <h3 style="font-size: 2rem; color: var(--c-kinetic); margin-bottom: 1rem;">NORTH_AMERICA</h3>
+                    <p style="opacity: 0.6; line-height: 1.8;">
+                        HUB_NYC // 42nd Terminal St.<br>
+                        HUB_LAX // Terminal A-9<br>
+                        HUB_CHI // O'Hare Vortex Node
+                    </p>
+                </div>
+                <div>
+                    <h3 style="font-size: 2rem; color: var(--c-kinetic); margin-bottom: 1rem;">EUROPE_REGION</h3>
+                    <p style="opacity: 0.6; line-height: 1.8;">
+                        HUB_LDN // Thames Grid<br>
+                        HUB_BER // Brandenburg Pulse<br>
+                        HUB_PAR // Seine Node-Delta
+                    </p>
+                </div>
+                <div>
+                    <h3 style="font-size: 2rem; color: var(--c-kinetic); margin-bottom: 1rem;">ASIA_PACIFIC</h3>
+                    <p style="opacity: 0.6; line-height: 1.8;">
+                        HUB_TKO // Shinjuku Core<br>
+                        HUB_SGP // Marina Sync Terminal<br>
+                        HUB_SHG // Pudong Pulse Center
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-speed-ex" style="text-align: center; padding: 20vh 5vw;">
+            <p style="letter-spacing: 0.5em; opacity: 0.5; margin-bottom: 5rem;">GLOBAL_FREQUENCY_MAP</p>
+            <div
+                style="width: 100%; height: 60vh; border: 1px solid var(--c-obsidian); position: relative; overflow: hidden;">
+                <img src="kinetic_network_data.png" alt="Map"
+                    style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) invert(1);">
+                <div
+                    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;">
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: System Protocols (FAQ) -->
+        <section class="section-speed-ex">
+            <div class="container">
+                <h2 class="big-text" style="font-size: 8vw;">SYSTEM_PROTOCOLS</h2>
+                <div style="margin-top: 5rem; display: flex; flex-direction: column; gap: 2rem;">
+                    <div style="padding: 3rem; border: 1px solid rgba(0,0,0,0.1);">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Q: HOW DO I INITIATE A QUANTUM-SEAL
+                            SHIPMENT?</h3>
+                        <p style="opacity: 0.7;">A: All Omega-class shipments are automatically quantum-sealed. For
+                            Lower tiers, you can enable the "Pulse Encryption" toggle in your Command Interface.</p>
+                    </div>
+                    <div style="padding: 3rem; border: 1px solid rgba(0,0,0,0.1);">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Q: WHAT HAPPENS IF A NODE GOES OFFLINE
+                            DURING TRANSIT?</h3>
+                        <p style="opacity: 0.7;">A: The Kinetic mesh is self-healing. Dynamic rerouting occurs within
+                            50ms of any node failure detection, ensuring no loss in velocity.</p>
+                    </div>
+                    <div style="padding: 3rem; border: 1px solid rgba(0,0,0,0.1);">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Q: CAN I TRACK BEYOND ATMOSPHERIC LAYERS?
+                        </h3>
+                        <p style="opacity: 0.7;">A: Yes. Our sub-orbital fleet maintains constant satellite uplink,
+                            providing uninterrupted telemetry even through ionospheric disturbances.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: Specialized Frequency -->
+        <section class="section-speed-ex" style="background: var(--c-obsidian); color: var(--c-paper);">
+            <div class="container">
+                <h2 style="font-size: 4rem; margin-bottom: 5rem;">SPECIALIZED_CHANNELS</h2>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+                    <div style="border-left: 2px solid var(--c-kinetic); padding-left: 2rem;">
+                        <h4>PRESS_SIGNAL</h4>
+                        <p style="opacity: 0.5;">MEDIA@speedEx.SYS</p>
+                    </div>
+                    <div style="border-left: 2px solid var(--c-kinetic); padding-left: 2rem;">
+                        <h4>INVESTOR_NODE</h4>
+                        <p style="opacity: 0.5;">CAPITAL@speedEx.SYS</p>
+                    </div>
+                    <div style="border-left: 2px solid var(--c-kinetic); padding-left: 2rem;">
+                        <h4>CAREERS_UPSTREAM</h4>
+                        <p style="opacity: 0.5;">JOIN@speedEx.SYS</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: Operating Hours -->
+        <section class="section-speed-ex" style="background: var(--c-obsidian); color: var(--c-paper);">
+            <div class="container">
+                <h2 class="big-text" style="font-size: 7vw; margin-bottom: 5rem; color: var(--c-kinetic);">
+                    OPERATIONAL_HOURS</h2>
+
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 4rem;">
+                    <div style="border-left: 3px solid var(--c-kinetic); padding-left: 2rem;">
+                        <h3 style="font-size: 2rem; margin-bottom: 2rem; color: var(--c-kinetic);">[ DISPATCH ]</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1rem; opacity: 0.8;">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>MON - FRI</span>
+                                <span style="font-weight: 900;">06:00 - 22:00</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>SATURDAY</span>
+                                <span style="font-weight: 900;">08:00 - 18:00</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>SUNDAY</span>
+                                <span style="font-weight: 900;">10:00 - 16:00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="border-left: 3px solid var(--c-kinetic); padding-left: 2rem;">
+                        <h3 style="font-size: 2rem; margin-bottom: 2rem; color: var(--c-kinetic);">[ SUPPORT ]</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1rem; opacity: 0.8;">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>LIVE CHAT</span>
+                                <span style="font-weight: 900;">24/7/365</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>PHONE HOTLINE</span>
+                                <span style="font-weight: 900;">24/7/365</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>EMAIL RESPONSE</span>
+                                <span style="font-weight: 900;">
+                                    < 2 HOURS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="border-left: 3px solid var(--c-kinetic); padding-left: 2rem;">
+                        <h3 style="font-size: 2rem; margin-bottom: 2rem; color: var(--c-kinetic);">[ EMERGENCY ]</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1rem; opacity: 0.8;">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>OMEGA TIER</span>
+                                <span style="font-weight: 900;">INSTANT</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>CRISIS RESPONSE</span>
+                                <span style="font-weight: 900;">
+                                    < 5 MIN</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>EXECUTIVE LINE</span>
+                                <span style="font-weight: 900;">DIRECT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: Emergency Contact Details -->
+        <section class="section-speed-ex">
+            <div class="container">
+                <h2 class="big-text" style="font-size: 8vw; margin-bottom: 3rem;">CRITICAL_CHANNELS</h2>
+                <p style="font-size: 1.5rem; max-width: 800px; margin-bottom: 6rem; opacity: 0.7;">For time-sensitive
+                    shipments, asset recovery, or mission-critical disruptions.</p>
+
+                <div
+                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 2px solid var(--c-obsidian);">
+                    <div style="padding: 4rem; border-right: 2px solid var(--c-obsidian);">
+                        <h3 style="font-size: 2.5rem; margin-bottom: 3rem; color: var(--c-kinetic);">EMERGENCY_DISPATCH
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 2rem;">
+                            <div>
+                                <h4 style="opacity: 0.5; margin-bottom: 0.5rem;">PRIORITY_HOTLINE</h4>
+                                <p style="font-size: 2rem; font-weight: 900;">+1 [888] SPEEDEX</p>
+                            </div>
+                            <div>
+                                <h4 style="opacity: 0.5; margin-bottom: 0.5rem;">OMEGA_DIRECT</h4>
+                                <p style="font-size: 2rem; font-weight: 900;">URGENT@speedEx.SYS</p>
+                            </div>
+                            <div>
+                                <h4 style="opacity: 0.5; margin-bottom: 0.5rem;">SATELLITE_UPLINK</h4>
+                                <p style="font-size: 2rem; font-weight: 900;">+1 [777] SAT-EX</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="padding: 4rem; background: var(--c-subtle);">
+                        <h3 style="font-size: 2.5rem; margin-bottom: 3rem;">ASSET_RECOVERY</h3>
+                        <div style="display: flex; flex-direction: column; gap: 2rem;">
+                            <div>
+                                <h4 style="opacity: 0.5; margin-bottom: 0.5rem;">TRACKING_ANOMALY</h4>
+                                <p style="font-size: 2rem; font-weight: 900;">TRACK@speedEx.SYS</p>
+                            </div>
+                            <div>
+                                <h4 style="opacity: 0.5; margin-bottom: 0.5rem;">DAMAGE_CLAIM</h4>
+                                <p style="font-size: 2rem; font-weight: 900;">CLAIMS@speedEx.SYS</p>
+                            </div>
+                            <div>
+                                <h4 style="opacity: 0.5; margin-bottom: 0.5rem;">LEGAL_DEPARTMENT</h4>
+                                <p style="font-size: 2rem; font-weight: 900;">LEGAL@speedEx.SYS</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: Partner Network -->
+        <section class="section-speed-ex" style="background: var(--c-subtle);">
+            <div class="container">
+                <h2 style="font-size: 5rem; margin-bottom: 2rem;">NETWORK_PARTNERS</h2>
+                <p style="font-size: 1.5rem; max-width: 800px; margin-bottom: 6rem; opacity: 0.7;">Interconnected with
+                    the world's leading logistics infrastructure for seamless multi-modal transit.</p>
+
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem;">
+                    <div style="text-align: center; padding: 3rem; border: 1px solid rgba(0,0,0,0.1);">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">✈</div>
+                        <h4 style="font-size: 1.2rem; margin-bottom: 1rem;">AIR_FREIGHT</h4>
+                        <p style="opacity: 0.6;">48 International Carriers</p>
+                    </div>
+
+                    <div style="text-align: center; padding: 3rem; border: 1px solid rgba(0,0,0,0.1);">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🚢</div>
+                        <h4 style="font-size: 1.2rem; margin-bottom: 1rem;">MARITIME</h4>
+                        <p style="opacity: 0.6;">23 Shipping Lines</p>
+                    </div>
+
+                    <div style="text-align: center; padding: 3rem; border: 1px solid rgba(0,0,0,0.1);">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🚄</div>
+                        <h4 style="font-size: 1.2rem; margin-bottom: 1rem;">RAIL_NETWORK</h4>
+                        <p style="opacity: 0.6;">15 Rail Operators</p>
+                    </div>
+
+                    <div style="text-align: center; padding: 3rem; border: 1px solid rgba(0,0,0,0.1);">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🚚</div>
+                        <h4 style="font-size: 1.2rem; margin-bottom: 1rem;">GROUND_FLEET</h4>
+                        <p style="opacity: 0.6;">8,400+ Vehicles</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 6rem; padding: 4rem; background: var(--c-obsidian); color: var(--c-paper);">
+                    <h3 style="font-size: 2.5rem; margin-bottom: 2rem; color: var(--c-kinetic);">INTEGRATION_PARTNERS
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; opacity: 0.8;">
+                        <div>
+                            <h4 style="margin-bottom: 1rem;">CUSTOMS_CLEARANCE</h4>
+                            <p style="opacity: 0.6;">→ TradeNet Global</p>
+                            <p style="opacity: 0.6;">→ CustomsLink Pro</p>
+                            <p style="opacity: 0.6;">→ BorderFast Systems</p>
+                        </div>
+                        <div>
+                            <h4 style="margin-bottom: 1rem;">WAREHOUSE_NETWORKS</h4>
+                            <p style="opacity: 0.6;">→ StoreHub International</p>
+                            <p style="opacity: 0.6;">→ VaultKeep Logistics</p>
+                            <p style="opacity: 0.6;">→ MegaDock Solutions</p>
+                        </div>
+                        <div>
+                            <h4 style="margin-bottom: 1rem;">INSURANCE_PROVIDERS</h4>
+                            <p style="opacity: 0.6;">→ TransitGuard Insurance</p>
+                            <p style="opacity: 0.6;">→ CargoShield Global</p>
+                            <p style="opacity: 0.6;">→ Lloyd's Freight Division</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: Support Resources -->
+        <section class="section-speed-ex">
+            <div class="container">
+                <h2 class="big-text" style="font-size: 8vw; margin-bottom: 5rem;">RESOURCE_HUB</h2>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
+                    <div class="kinetic-card" style="padding: 4rem; border-top: 5px solid var(--c-kinetic);">
+                        <h3 style="font-size: 2.5rem; margin-bottom: 2rem;">KNOWLEDGE_BASE</h3>
+                        <ul
+                            style="list-style: none; display: flex; flex-direction: column; gap: 1.5rem; font-size: 1.2rem;">
+                            <li style="padding-bottom: 1rem; border-bottom: 1px solid rgba(0,0,0,0.1);">
+                                <a href="#"
+                                    style="color: inherit; text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                                    <span>Getting Started Guide</span>
+                                    <span style="opacity: 0.3;">→</span>
+                                </a>
+                            </li>
+                            <li style="padding-bottom: 1rem; border-bottom: 1px solid rgba(0,0,0,0.1);">
+                                <a href="#"
+                                    style="color: inherit; text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                                    <span>API Documentation</span>
+                                    <span style="opacity: 0.3;">→</span>
+                                </a>
+                            </li>
+                            <li style="padding-bottom: 1rem; border-bottom: 1px solid rgba(0,0,0,0.1);">
+                                <a href="#"
+                                    style="color: inherit; text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                                    <span>Packaging Standards</span>
+                                    <span style="opacity: 0.3;">→</span>
+                                </a>
+                            </li>
+                            <li style="padding-bottom: 1rem; border-bottom: 1px solid rgba(0,0,0,0.1);">
+                                <a href="#"
+                                    style="color: inherit; text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                                    <span>Customs Compliance</span>
+                                    <span style="opacity: 0.3;">→</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    style="color: inherit; text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                                    <span>Prohibited Items List</span>
+                                    <span style="opacity: 0.3;">→</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="kinetic-card"
+                        style="padding: 4rem; background: var(--c-obsidian); color: var(--c-paper); border-top: 5px solid var(--c-kinetic);">
+                        <h3 style="font-size: 2.5rem; margin-bottom: 2rem; color: var(--c-kinetic);">DEVELOPER_PORTAL
+                        </h3>
+                        <ul
+                            style="list-style: none; display: flex; flex-direction: column; gap: 1.5rem; font-size: 1.2rem;">
+                            <li style="padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <a href="#"
+                                    style="color: inherit; text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                                    <span>REST API Reference</span>
+                                    <span style="opacity: 0.3;">→</span>
+                                </a>
+                            </li>
+                            <li style="padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <a href="#"
+                                    style="color: inherit; text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                                    <span>GraphQL Playground</span>
+                                    <span style="opacity: 0.3;">→</span>
+                                </a>
+                            </li>
+                            <li style="padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <a href="#"
+                                    style="color: inherit; text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                                    <span>Webhook Configuration</span>
+                                    <span style="opacity: 0.3;">→</span>
+                                </a>
+                            </li>
+                            <li style="padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <a href="#"
+                                    style="color: inherit; text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                                    <span>SDK Downloads</span>
+                                    <span style="opacity: 0.3;">→</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    style="color: inherit; text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                                    <span>Code Examples</span>
+                                    <span style="opacity: 0.3;">→</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="margin-top: 4rem; padding: 5rem; border: 2px solid var(--c-obsidian); text-align: center;">
+                    <h3 style="font-size: 3rem; margin-bottom: 2rem;">STILL NEED ASSISTANCE?</h3>
+                    <p style="font-size: 1.3rem; margin-bottom: 3rem; opacity: 0.7;">Our neural support team is standing
+                        by to resolve any query.</p>
+                    <div style="display: flex; gap: 2rem; justify-content: center;">
+                        <button class="big-text interactive"
+                            style="background: var(--c-obsidian); border: none; color: var(--c-paper); padding: 2rem 4rem; cursor: pointer; font-size: 1.5rem;">
+                            [ LIVE CHAT ]
+                        </button>
+                        <button class="big-text interactive"
+                            style="background: none; border: 3px solid var(--c-obsidian); color: var(--c-obsidian); padding: 2rem 4rem; cursor: pointer; font-size: 1.5rem;">
+                            [ SCHEDULE CALL ]
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-info">
+                <div class="footer-logo">speedEx</div>
+                <p style="opacity: 0.5; max-width: 300px; line-height: 1.6;">
+                    Redefining the physical world through neural-optimized logistics and atomic-precision distribution.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h4>System</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">Manifesto</a></li>
+                    <li><a href="services.html">Systems</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="contact.html">Node Access</a></li>
+                    <li><a href="login.html">Command Interface</a></li>
+                    <li><a href="#">Support Signal</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Protocol Terms</a></li>
+                    <li><a href="#">Privacy Mesh</a></li>
+                    <li><a href="#">Encryption Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center;">
+            <div>© 2026 speedEx // ALL_SYSTEMS_OPERATIONAL</div>
+            <div style="display: flex; gap: 1.5rem; align-items: center;">
+                <a href="https://instagram.com" target="_blank"
+                    style="color: inherit; text-decoration: none; opacity: 0.6; transition: var(--t-fast); display: inline-block;"
+                    onmouseover="this.style.opacity='1'; this.style.color='var(--c-kinetic)'"
+                    onmouseout="this.style.opacity='0.6'; this.style.color='inherit'" title="Instagram"><svg width="24"
+                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="square" stroke-linejoin="miter">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg></a>
+                <a href="https://facebook.com" target="_blank"
+                    style="color: inherit; text-decoration: none; opacity: 0.6; transition: var(--t-fast); display: inline-block;"
+                    onmouseover="this.style.opacity='1'; this.style.color='var(--c-kinetic)'"
+                    onmouseout="this.style.opacity='0.6'; this.style.color='inherit'" title="Facebook"><svg width="24"
+                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="square" stroke-linejoin="miter">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg></a>
+                <a href="https://youtube.com" target="_blank"
+                    style="color: inherit; text-decoration: none; opacity: 0.6; transition: var(--t-fast); display: inline-block;"
+                    onmouseover="this.style.opacity='1'; this.style.color='var(--c-kinetic)'"
+                    onmouseout="this.style.opacity='0.6'; this.style.color='inherit'" title="YouTube"><svg width="24"
+                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="square" stroke-linejoin="miter">
+                        <path
+                            d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                        </path>
+                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon>
+                    </svg></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="rtltoggle.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 // speedEx</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body
+    style="height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--c-kinetic); color: white;">
+    <div class="vertical-text">EST. 2026 // speedEx FLOW // GLOBAL NODES</div>
+
+    <nav>
+        <div class="nav-module">
+            <div class="nav-logo" onclick="location.href='index.html'" style="cursor: pointer;">speedEx</div>
+        </div>
+        <div class="nav-module nav-links">
+            <div class="dropdown">
+                <a href="index.html" data-id="RT_01">Home ▾</a>
+                <div class="dropdown-content">
+                    <a href="index.html">Home 1 // Main Grid</a>
+                    <a href="index2.html">Home 2 // Ghost Protocol</a>
+                </div>
+            </div>
+            <a href="about.html" data-id="RT_02">About</a>
+            <a href="services.html" data-id="RT_03">Services</a>
+            <a href="contact.html" data-id="RT_04">Contact</a>
+            <div class="dropdown">
+                <a href="dashboard-user.html" data-id="RT_05">Dashboards ▾</a>
+                <div class="dropdown-content">
+                    <a href="dashboard-user.html">User // Node Terminal</a>
+                    <a href="dashboard-admin.html">Admin // Core Logic</a>
+                </div>
+            </div>
+        </div>
+        <div class="nav-module nav-actions">
+            <button id="theme-toggle" class="icon-btn">◐</button>
+            <button id="rtl-toggle" class="icon-btn">⇄</button>
+            <button class="nav-btn" onclick="location.href='login.html'">Login</button>
+        </div>
+    </nav>
+
+    <div style="text-align: center; padding-top: 15vh;">
+        <div class="big-text" style="font-size: 20vw; line-height: 0.7;">404</div>
+        <div class="big-text" style="font-size: 5vw; margin-top: 2rem;">NODE_NOT_FOUND</div>
+
+        <div
+            style="margin-top: 4rem; background: rgba(0,0,0,0.1); padding: 2rem; font-family: monospace; text-align: left; max-width: 500px; margin-left: auto; margin-right: auto; font-size: 0.8rem;">
+            <div style="color: rgba(255,255,255,0.5);">[ SYSTEM_REPORT ]</div>
+            <div style="margin-top: 1rem;">> Error: PATH_DIVERGENCE_DETECTED</div>
+            <div>> Signal: LOST_AT_SEA_NODE_404</div>
+            <div>> Action: RECURSIVE_CLEANUP_INITIATED</div>
+            <div>> Status: Retrying link... FAILED</div>
+        </div>
+
+        <p style="margin-top: 4rem; text-transform: uppercase; letter-spacing: 0.5em; font-weight: 900;">Packet lost in
+            transmission.</p>
+        <a href="index.html" class="interactive"
+            style="display: inline-block; margin-top: 4rem; font-size: 2rem; border-bottom: 5px solid white; text-decoration: none; color: white; font-weight: 900;">[
+            RETRACE_STEPS ]</a>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="rtltoggle.js"></script>
+</body>
+
+</html>

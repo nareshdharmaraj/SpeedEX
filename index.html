@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>speedEx // LOGISTICS REDEFINED</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="vertical-text">EST. 2026 // speedEx FLOW // GLOBAL NODES</div>
+
+    <nav>
+        <div class="nav-module">
+            <div class="nav-logo" onclick="location.href='index.html'" style="cursor: pointer;">speedEx</div>
+        </div>
+        <div class="nav-module nav-links">
+            <select class="nav-select" onchange="if(this.value) location.href=this.value">
+                <option value="" disabled selected>Home</option>
+                <option value="index.html">Home 1 // Main Grid</option>
+                <option value="index2.html">Home 2 // Ghost Protocol</option>
+            </select>
+            <a href="about.html" data-id="RT_02">About</a>
+            <a href="services.html" data-id="RT_03">Services</a>
+            <a href="contact.html" data-id="RT_04">Contact</a>
+            <select class="nav-select" onchange="if(this.value) location.href=this.value">
+                <option value="" disabled selected>Dashboards</option>
+                <option value="dashboard-user.html">User // Node Terminal</option>
+                <option value="dashboard-admin.html">Admin // Core Logic</option>
+            </select>
+        </div>
+        <div class="nav-module nav-actions">
+            <button id="rtl-toggle" class="icon-btn">🌐</button>
+            <button id="theme-toggle" class="icon-btn">🌗</button>
+            <button class="nav-btn" onclick="location.href='login.html'">LOGIN</button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section-speed-ex" style="padding-top: 15vh;">
+            <div class="big-text" style="color: var(--c-kinetic);">GLOBAL</div>
+            <div class="big-text" style="margin-left: 20vw;">COURIER</div>
+            <div class="big-text" style="text-align: right; margin-right: 5vw;">EXPRESS.</div>
+
+            <!-- Shipment Tracking Bar -->
+            <div style="margin-top: 10vh; display: flex; justify-content: center;">
+                <div
+                    style="width: 100%; max-width: 900px; background: var(--c-obsidian); padding: 1rem; border-radius: 100px; display: flex; gap: 1rem; align-items: center; box-shadow: 0 30px 60px rgba(0,0,0,0.2);">
+                    <input type="text" placeholder="ENTER TRACKING NUMBER (E.G. SX-99281-X)"
+                        style="flex: 1; background: none; border: none; color: var(--c-paper); padding: 1.5rem 3rem; font-family: inherit; font-weight: 900; font-size: 1rem; outline: none;">
+                    <button class="nav-btn" style="height: 60px; border-radius: 100px; padding: 0 4rem;">TRACK</button>
+                </div>
+            </div>
+
+            <div class="image-stack" style="margin-top: 5vh;">
+                <div class="image-layer layer-1">
+                    <img src="express_delivery_premium.png" alt="Express Delivery">
+                </div>
+                <div class="image-layer layer-2" style="border: none;">
+                    <img src="logistics_center_premium.png" alt="Logistics Center">
+                </div>
+                <div class="image-layer layer-3">
+                    <img src="air_freight_premium.png" alt="Air Freight">
+                </div>
+            </div>
+        </section>
+
+        <section class="section-speed-ex" style="background: var(--c-obsidian); color: var(--c-paper);">
+            <div class="container">
+                <h2 style="font-size: 4rem; margin-bottom: 5rem;">LOGISTICS <br>NETWORK</h2>
+
+                <div class="speed-ex-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span>01 / NEXUS_TRACKING</span>
+                        <p style="max-width: 400px;">Real-time GPS synchronization for every shipment, providing 2-meter
+                            accuracy across all continents.</p>
+                    </div>
+                </div>
+
+                <div class="speed-ex-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span>02 / EXPRESS_FLEET</span>
+                        <p style="max-width: 400px;">Our high-velocity air and ground fleet operations ensure sub-24h
+                            delivery for priority cargo.</p>
+                    </div>
+                </div>
+
+                <div class="speed-ex-card" style="border-bottom: 5px solid currentColor;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span>03 / GLOBAL_CLEARANCE</span>
+                        <p style="max-width: 400px;">Automated customs processing and smart border transition digital
+                            documentation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-speed-ex" style="padding-top: 0;">
+            <div style="display: flex; gap: 2rem; border-top: 1px solid var(--c-obsidian); padding-top: 5rem;">
+                <div style="flex: 1;">
+                    <h2 class="big-text" style="font-size: 8vw;">42.8M</h2>
+                    <p style="letter-spacing: 0.2em; opacity: 0.6;">DELIVERIES_COMPLETED</p>
+                </div>
+                <div style="flex: 1;">
+                    <h2 class="big-text" style="font-size: 8vw; color: var(--c-kinetic);">24H</h2>
+                    <p style="letter-spacing: 0.2em; opacity: 0.6;">GLOBAL_GUARANTEE</p>
+                </div>
+                <div style="flex: 1;">
+                    <h2 class="big-text" style="font-size: 8vw;">99.9%</h2>
+                    <p style="letter-spacing: 0.2em; opacity: 0.6;">ON_TIME_RATE</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 15vh; display: grid; grid-template-columns: 1fr 1fr; gap: 10vw;">
+                <div>
+                    <h3 style="font-size: 2.5rem; line-height: 1.1; margin-bottom: 2rem;">MASSIVE SCALE.<br>ATOMIC
+                        PRECISION.</h3>
+                    <p style="font-size: 1.2rem; opacity: 0.7; line-height: 1.6;">
+                        Our core infrastructure is built to handle extreme volume without compromising the integrity of
+                        individual shipments.
+                        Every packet moving through the speedEx mesh is treated as a critical terminal state, tracked
+                        with millisecond accuracy across the globe.
+                    </p>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
+                    <div>
+                        <h4 style="color: var(--c-kinetic); margin-bottom: 1rem;">[ 12k ]</h4>
+                        <p style="font-size: 0.8rem; opacity: 0.5;">ACTIVE_NODES</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--c-kinetic); margin-bottom: 1rem;">[ 88s ]</h4>
+                        <p style="font-size: 0.8rem; opacity: 0.5;">AVG_REROUTE_SPEED</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--c-kinetic); margin-bottom: 1rem;">[ 0.02% ]</h4>
+                        <p style="font-size: 0.8rem; opacity: 0.5;">ERROR_MARGIN</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--c-kinetic); margin-bottom: 1rem;">[ 24/7 ]</h4>
+                        <p style="font-size: 0.8rem; opacity: 0.5;">NEURAL_UPTIME</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-speed-ex" style="padding: 0; min-height: 80vh;">
+            <div style="position: relative; width: 100%; height: 80vh; overflow: hidden;">
+                <img src="speedEx_global_shipping.png" alt="Global Network"
+                    style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.2);">
+                <div
+                    style="position: absolute; bottom: 5rem; left: 5rem; max-width: 1100px; width: calc(100% - 10rem); background: var(--c-obsidian); color: var(--c-paper); padding: 4rem;">
+                    <h3 style="font-size: 4.5rem; line-height: 1.1; margin-bottom: 2rem; text-transform: uppercase;">
+                        GLOBAL_HUB //
+                        <br>INTELLIGENT_ROUTING
+                    </h3>
+                    <p style="opacity: 0.8; line-height: 1.4;">Connecting 220+ countries with our primary distribution
+                        nodes, optimizing transit times through predictive logistics and real-time cargo stream
+                        management.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-speed-ex">
+            <h2 class="big-text"
+                style="color: var(--c-obsidian); opacity: 0.1; position: absolute; top: 10vh; left: 0; font-size: 25vw;">
+                STATUS
+            </h2>
+            <div
+                style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--c-obsidian); margin-top: 10vh;">
+                <div style="background: var(--c-paper); padding: 3rem;">
+                    <h4 style="color: var(--c-obsidian);">[ ONLINE ]</h4>
+                    <p style="margin-top: 1rem; font-weight: 700;">LONDON_NODE</p>
+                    <div style="margin-top: 2rem; font-family: monospace; font-size: 0.7rem; opacity: 0.5;">51.5074° N,
+                        0.1278° W</div>
+                </div>
+                <div style="background: var(--c-paper); padding: 3rem;">
+                    <h4 style="color: var(--c-obsidian);">[ ONLINE ]</h4>
+                    <p style="margin-top: 1rem; font-weight: 700;">_NODE</p>
+                    <div style="margin-top: 2rem; font-family: monospace; font-size: 0.7rem; opacity: 0.5;">35.6762° N,
+                        139.6503° E</div>
+                </div>
+                <div style="background: var(--c-paper); padding: 3rem;">
+                    <h4 style="color: var(--c-obsidian);">[ ONLINE ]</h4>
+                    <p style="margin-top: 1rem; font-weight: 700;">NYC_NODE</p>
+                    <div style="margin-top: 2rem; font-family: monospace; font-size: 0.7rem; opacity: 0.5;">40.7128° N,
+                        74.0060° W</div>
+                </div>
+                <div style="background: var(--c-paper); padding: 3rem;">
+                    <h4 style="color: var(--c-obsidian);">[ FULL_CAP ]</h4>
+                    <p style="margin-top: 1rem; font-weight: 700;">BERLIN_NODE</p>
+                    <div style="margin-top: 2rem; font-family: monospace; font-size: 0.7rem; opacity: 0.5;">52.5200° N,
+                        13.4050° E</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-speed-ex" style="background: var(--c-paper); color: var(--c-obsidian);">
+            <div class="container" style="text-align: center;">
+                <p style="text-transform: uppercase; letter-spacing: 0.5em; margin-bottom: 2rem; opacity: 0.5;">
+                    READY_TO_DISPATCH?</p>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 4rem;">
+                    <a href="contact.html" class="big-text"
+                        style="text-decoration: none; color: inherit; font-size: 8vw; transition: var(--t-fast);">[
+                        SHIP_NOW ]</a>
+
+                    <div
+                        style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; width: 100%; max-width: 1000px; margin-top: 5vh;">
+                        <div style="padding: 2rem; border: 1px solid rgba(0,0,0,0.1); text-align: left;">
+                            <h4 style="color: var(--c-kinetic); margin-bottom: 1rem;">AIR_PRIORITY</h4>
+                            <p style="font-size: 0.8rem; opacity: 0.6;">Next-cycle sub-orbital routing for time-critical
+                                atomic assets.</p>
+                        </div>
+                        <div style="padding: 2rem; border: 1px solid rgba(0,0,0,0.1); text-align: left;">
+                            <h4 style="color: var(--c-kinetic); margin-bottom: 1rem;">GROUND_MESH</h4>
+                            <p style="font-size: 0.8rem; opacity: 0.6;">High-velocity terrestrial distribution via local
+                                node-clusters.</p>
+                        </div>
+                        <div style="padding: 2rem; border: 1px solid rgba(0,0,0,0.1); text-align: left;">
+                            <h4 style="color: var(--c-kinetic); margin-bottom: 1rem;">OCEAN_FLOW</h4>
+                            <p style="font-size: 0.8rem; opacity: 0.6;">Mass-volume freight optimization across deep-sea
+                                neural corridors.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: Process Flow -->
+        <section class="section-speed-ex" style="background: var(--c-obsidian); color: var(--c-paper);">
+            <div class="container">
+                <h2 class="big-text" style="font-size: 6vw; margin-bottom: 5rem;">OPERATIONAL_FLOW</h2>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;">
+                    <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 2rem;">
+                        <h3 style="color: var(--c-kinetic); margin-bottom: 1rem;">01. INPUT</h3>
+                        <p style="opacity: 0.7;">Digital shipment anchoring and AI-driven weight/volume optimization for
+                            immediate dispatch readiness.</p>
+                    </div>
+                    <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 2rem;">
+                        <h3 style="color: var(--c-kinetic); margin-bottom: 1rem;">02. TRAVERSE</h3>
+                        <p style="opacity: 0.7;">High-velocity transit through our global sub-orbital and terrestrial
+                            neural corridors.</p>
+                    </div>
+                    <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 2rem;">
+                        <h3 style="color: var(--c-kinetic); margin-bottom: 1rem;">03. SYNC</h3>
+                        <p style="opacity: 0.7;">Real-time node-to-node verification ensuring atomic integrity and
+                            cryptographic security.</p>
+                    </div>
+                    <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 2rem;">
+                        <h3 style="color: var(--c-kinetic); margin-bottom: 1rem;">04. RESOLVE</h3>
+                        <p style="opacity: 0.7;">Final precision delivery to the destination terminal with millisecond
+                            latency verification.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: Testimonials -->
+        <section class="section-speed-ex">
+            <div class="container">
+                <h2 style="font-size: 4rem; margin-bottom: 4rem;">NETWORK_FEEDBACK</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
+                    <div style="background: var(--c-subtle); padding: 4rem; border-left: 10px solid var(--c-kinetic);">
+                        <p style="font-size: 1.5rem; font-style: italic; margin-bottom: 2rem;">"speedEx has completely
+                            eliminated our logistics overhead. Their neural routing is years ahead of any traditional
+                            courier."</p>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden;">
+                                <img src="director_avatar.png" alt="Director"
+                                    style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div>
+                                <div style="font-weight: 900;">DIRECTOR_011</div>
+                                <div style="font-size: 0.8rem; opacity: 0.5;">TECHCORP GLOBAL</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background: var(--c-subtle); padding: 4rem; border-left: 10px solid var(--c-obsidian);">
+                        <p style="font-size: 1.5rem; font-style: italic; margin-bottom: 2rem;">"The sub-6h delivery
+                            accuracy in Tokyo is unparalleled. Kinetic is the only choice for our time-sensitive
+                            hazardous materials."</p>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden;">
+                                <img src="logistics_lead_avatar.png" alt="Logistics Lead"
+                                    style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div>
+                                <div style="font-weight: 900;">LOGISTICS_LEAD</div>
+                                <div style="font-size: 0.8rem; opacity: 0.5;">BIO-SYNC INDUSTRIES</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: Newsletter/CTA -->
+        <section class="section-speed-ex"
+            style="background: var(--c-kinetic); color: var(--c-obsidian); text-align: center;">
+            <div class="container">
+                <h2 class="big-text" style="font-size: 8vw;">BECOME_speedEx</h2>
+                <p
+                    style="font-size: 1.5rem; margin-top: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    Join the most advanced logistics network in existence. Receive system updates and protocol changes
+                    directly in your terminal.</p>
+                <div style="margin-top: 4rem; display: flex; justify-content: center; gap: 1rem;">
+                    <input type="email" placeholder="YOUR_SIGNAL@ENDPOINT.COM"
+                        style="background: rgba(0,0,0,0.2); border: 2px solid var(--c-obsidian); color: white; padding: 1.5rem 3rem; font-family: inherit; font-weight: 900; width: 400px; outline: none;">
+                    <button class="nav-btn" style="padding: 1.5rem 3rem;">SUBSCRIBE</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-info">
+                <div class="footer-logo">speedEx</div>
+                <p style="opacity: 0.5; max-width: 300px; line-height: 1.6;">
+                    Redefining the physical world through neural-optimized logistics and atomic-precision distribution.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h4>System</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">Manifesto</a></li>
+                    <li><a href="services.html">Systems</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="contact.html">Node Access</a></li>
+                    <li><a href="login.html">Command Interface</a></li>
+                    <li><a href="#">Support Signal</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Protocol Terms</a></li>
+                    <li><a href="#">Privacy Mesh</a></li>
+                    <li><a href="#">Encryption Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center;">
+            <div>© 2026 speedEx // ALL_SYSTEMS_OPERATIONAL</div>
+            <div style="display: flex; gap: 1.5rem; align-items: center;">
+                <a href="https://instagram.com" target="_blank"
+                    style="color: inherit; text-decoration: none; opacity: 0.6; transition: var(--t-fast); display: inline-block;"
+                    onmouseover="this.style.opacity='1'; this.style.color='var(--c-kinetic)'"
+                    onmouseout="this.style.opacity='0.6'; this.style.color='inherit'" title="Instagram">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="square" stroke-linejoin="miter">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+                <a href="https://facebook.com" target="_blank"
+                    style="color: inherit; text-decoration: none; opacity: 0.6; transition: var(--t-fast); display: inline-block;"
+                    onmouseover="this.style.opacity='1'; this.style.color='var(--c-kinetic)'"
+                    onmouseout="this.style.opacity='0.6'; this.style.color='inherit'" title="Facebook">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="square" stroke-linejoin="miter">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                </a>
+                <a href="https://youtube.com" target="_blank"
+                    style="color: inherit; text-decoration: none; opacity: 0.6; transition: var(--t-fast); display: inline-block;"
+                    onmouseover="this.style.opacity='1'; this.style.color='var(--c-kinetic)'"
+                    onmouseout="this.style.opacity='0.6'; this.style.color='inherit'" title="YouTube">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="square" stroke-linejoin="miter">
+                        <path
+                            d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                        </path>
+                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="rtltoggle.js"></script>
+</body>
+
+</html>

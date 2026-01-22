@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GHOST // speedEx FLOW</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --c-paper: #050505;
+            --c-obsidian: #fcfcfc;
+            --c-kinetic: #00f2ff;
+            --c-subtle: #1a1a1a;
+        }
+
+        [data-theme="light"] {
+            --c-paper: #fcfcfc;
+            --c-obsidian: #050505;
+            --c-subtle: #f4f4f4;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-module" style="background: var(--c-kinetic); color: var(--c-paper);">
+            <div class="nav-logo" onclick="location.href='index.html'" style="cursor: pointer;">speedEx</div>
+        </div>
+        <div class="nav-module nav-links" style="background: var(--c-paper); color: var(--c-obsidian);">
+            <select class="nav-select" onchange="if(this.value) location.href=this.value">
+                <option value="" disabled selected>Home</option>
+                <option value="index.html">Home 1 // Main Grid</option>
+                <option value="index2.html">Home 2 // Ghost Protocol</option>
+            </select>
+            <a href="about.html" style="color: inherit;" data-id="GH_02">About</a>
+            <a href="services.html" style="color: inherit;" data-id="GH_03">Services</a>
+            <a href="contact.html" style="color: inherit;" data-id="GH_04">Contact</a>
+            <select class="nav-select" onchange="if(this.value) location.href=this.value">
+                <option value="" disabled selected>Dashboards</option>
+                <option value="dashboard-user.html">User // Node Terminal</option>
+                <option value="dashboard-admin.html">Admin // Core Logic</option>
+            </select>
+        </div>
+        <div class="nav-module nav-actions" style="background: var(--c-kinetic); color: var(--c-paper);">
+            <button id="rtl-toggle" class="icon-btn" style="border-color: inherit;">🌐</button>
+            <button id="theme-toggle" class="icon-btn" style="border-color: inherit;">🌗</button>
+            <button class="nav-btn" style="background: var(--c-paper); color: var(--c-obsidian);"
+                onclick="location.href='login.html'">LOGIN</button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section-speed-ex" style="padding-top: 20vh;">
+            <div class="big-text" style="color: var(--c-kinetic); font-size: 15vw;">GHOST</div>
+            <div class="big-text" style="margin-top: -5vh; text-align: right;">PROTOCOL</div>
+
+            <div style="display: flex; justify-content: flex-end; margin-top: 10vh;">
+                <p
+                    style="max-width: 500px; font-size: 1.5rem; text-transform: uppercase; border-right: 5px solid var(--c-kinetic); padding-right: 2rem;">
+                    Local-scale logistics at zero latency. The Ghost Protocol is our ultra-short-range node delivery
+                    system for high-density urban sectors.
+                </p>
+            </div>
+
+            <div class="image-stack" style="margin-top: 10vh; height: 60vh;">
+                <div class="image-layer" style="width: 100%; height: 100%; position: static;">
+                    <img src="Assets/kinetic3.jpg" alt="Ghost">
+                </div>
+            </div>
+        </section>
+
+        <section class="section-speed-ex" style="text-align: center; overflow: hidden;">
+            <div class="big-text" style="opacity: 0.05; font-size: 8vw; white-space: nowrap;">TRANSPARENCY</div>
+            <h2 style="font-size: 10vw; margin-top: -10vh; white-space: nowrap;">NO_DELAY</h2>
+
+            <div
+                style="margin-top: 20vh; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; text-align: left;">
+                <div style="padding: 2rem; border: 1px solid var(--c-obsidian);">
+                    <h4 style="color: var(--c-kinetic); margin-bottom: 2rem;">[ 01 ] ZERO_G_LOGISTICS</h4>
+                    <p style="opacity: 0.7;">Utilizing localized vacuum tubes for sub-second packet distribution across
+                        urban centers.</p>
+                </div>
+                <div style="padding: 2rem; border: 1px solid var(--c-obsidian);">
+                    <h4 style="color: var(--c-kinetic); margin-bottom: 2rem;">[ 02 ] PHANTOM_NODES</h4>
+                    <p style="opacity: 0.7;">Mobile delivery hubs that move in predictive synchronization with citizen
+                        density flows.</p>
+                </div>
+                <div style="padding: 2rem; border: 1px solid var(--c-obsidian);">
+                    <h4 style="color: var(--c-kinetic); margin-bottom: 2rem;">[ 03 ] ATOMIC_LOCK</h4>
+                    <p style="opacity: 0.7;">Secure hand-off protocols using biometric resonance at every Ghost
+                        terminal.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: Global Nodes Distribution -->
+        <section class="section-speed-ex" style="background: var(--c-subtle); color: var(--c-obsidian);">
+            <div class="container">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 5rem;">
+                    <div>
+                        <h2 class="big-text" style="font-size: 8vw;">GLOBAL_NODES</h2>
+                        <p style="text-transform: uppercase; letter-spacing: 0.2em; opacity: 0.5;">ACTIVE_SYNC //
+                            24/7_COVERAGE</p>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;">
+                    <div style="background: var(--c-paper); padding: 3rem; border: 1px solid rgba(0,0,0,0.05);">
+                        <div style="font-weight: 900; color: var(--c-kinetic);">TOKYO_1</div>
+                        <div style="font-size: 3rem; font-weight: 900; margin: 1rem 0;">98.2%</div>
+                        <div style="font-size: 0.7rem; opacity: 0.5;">STABILITY</div>
+                    </div>
+                    <div style="background: var(--c-paper); padding: 3rem; border: 1px solid rgba(0,0,0,0.05);">
+                        <div style="font-weight: 900; color: var(--c-kinetic);">NYC_4</div>
+                        <div style="font-size: 3rem; font-weight: 900; margin: 1rem 0;">94.7%</div>
+                        <div style="font-size: 0.7rem; opacity: 0.5;">STABILITY</div>
+                    </div>
+                    <div style="background: var(--c-paper); padding: 3rem; border: 1px solid rgba(0,0,0,0.05);">
+                        <div style="font-weight: 900; color: var(--c-kinetic);">LONDON 02</div>
+                        <div style="font-size: 3rem; font-weight: 900; margin: 1rem 0;">99.1%</div>
+                        <div style="font-size: 0.7rem; opacity: 0.5;">STABILITY</div>
+                    </div>
+                    <div style="background: var(--c-paper); padding: 3rem; border: 1px solid rgba(0,0,0,0.05);">
+                        <div style="font-weight: 900; color: var(--c-kinetic);">SYDNEY 01</div>
+                        <div style="font-size: 3rem; font-weight: 900; margin: 1rem 0;">96.5%</div>
+                        <div style="font-size: 0.7rem; opacity: 0.5;">STABILITY</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-speed-ex"
+            style="padding: 0; min-height: 80vh; background: var(--c-paper); color: var(--c-obsidian); display: flex; flex-direction: column; justify-content: center; position: relative; border-top: 20px solid var(--c-kinetic);">
+            <div class="container" style="padding: 10vh 0;">
+                <h3 class="big-text" style="font-size: 12vw; line-height: 0.9; margin-bottom: 2rem;">URBAN<br>OVERLAY
+                </h3>
+                <div style="display: flex; justify-content: flex-end; margin-top: -5vh;">
+                    <p style="max-width: 400px; text-align: right; font-size: 1.2rem; font-weight: 700; opacity: 0.8;">
+                        The Ghost Protocol is currently active in 48 Mega-Cities. Join the dark-mode logistics
+                        revolution.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: Core Protocols -->
+        <section class="section-speed-ex" style="background: var(--c-obsidian); color: var(--c-paper);">
+            <div class="container">
+                <h2 class="big-text" style="font-size: 6vw; margin-bottom: 5rem;">CORE_PROTOCOLS</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
+                    <div style="padding: 3rem; border: 1px solid rgba(255,255,255,0.1);">
+                        <div style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 1rem;">[ PROTO_A01 ]</div>
+                        <h3 style="font-size: 2rem; margin-bottom: 2rem;">NEURAL_ROUTING</h3>
+                        <p style="opacity: 0.7; line-height: 1.6;">Our mesh network uses predictive AI to anticipate
+                            urban traffic density 30 minutes before it occurs, rerouting ghost-packets through
+                            subterranean and rooftop corridors to maintain zero-latency throughput.</p>
+                    </div>
+                    <div style="padding: 3rem; border: 1px solid rgba(255,255,255,0.1);">
+                        <div style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 1rem;">[ PROTO_A02 ]</div>
+                        <h3 style="font-size: 2rem; margin-bottom: 2rem;">COVERT_TRANSIT</h3>
+                        <p style="opacity: 0.7; line-height: 1.6;">Every delivery is encrypted physically. Utilizing
+                            unbranded electric micro-units, the Ghost Protocol operates within the noise of the city,
+                            becoming invisible to traditional logistics monitors.</p>
+                    </div>
+                    <div style="padding: 3rem; border: 1px solid rgba(255,255,255,0.1);">
+                        <div style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 1rem;">[ PROTO_A03 ]</div>
+                        <h3 style="font-size: 2rem; margin-bottom: 2rem;">ATOMIC_SECURITY</h3>
+                        <p style="opacity: 0.7; line-height: 1.6;">Verification at the point of delivery requires a
+                            localized biometric handshake. No keys, no pins. The receiver is the identity. Security is
+                            absolute at the atomic level.</p>
+                    </div>
+                    <div style="padding: 3rem; border: 1px solid rgba(255,255,255,0.1);">
+                        <div style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 1rem;">[ PROTO_A04 ]</div>
+                        <h3 style="font-size: 2rem; margin-bottom: 2rem;">PHANTOM_NODES</h3>
+                        <p style="opacity: 0.7; line-height: 1.6;">Our distribution points are mobile and transitory. By
+                            utilizing a fluid network of floating hubs, we eliminate centralized failure points and
+                            maximize geographic adaptability.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: Performance Metrics -->
+        <section class="section-speed-ex" style="background: var(--c-subtle); color: var(--c-obsidian);">
+            <div class="container">
+                <h2 class="big-text" style="font-size: 6vw; margin-bottom: 5rem;">PERFORMANCE_METRICS</h2>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;">
+                    <div style="border-left: 5px solid var(--c-kinetic); padding-left: 2rem;">
+                        <div style="font-size: 3rem; font-weight: 900; color: var(--c-kinetic);">0.4s</div>
+                        <div style="font-size: 0.8rem; font-weight: 700; opacity: 0.5;">LATENCY</div>
+                    </div>
+                    <div style="border-left: 5px solid var(--c-kinetic); padding-left: 2rem;">
+                        <div style="font-size: 3rem; font-weight: 900; color: var(--c-kinetic);">99.98%</div>
+                        <div style="font-size: 0.8rem; font-weight: 700; opacity: 0.5;">STABILITY</div>
+                    </div>
+                    <div style="border-left: 5px solid var(--c-kinetic); padding-left: 2rem;">
+                        <div style="font-size: 3rem; font-weight: 900; color: var(--c-kinetic);">1.2M</div>
+                        <div style="font-size: 0.8rem; font-weight: 700; opacity: 0.5;">DAILY_TRANSFERS</div>
+                    </div>
+                    <div style="border-left: 5px solid var(--c-kinetic); padding-left: 2rem;">
+                        <div style="font-size: 3rem; font-weight: 900; color: var(--c-kinetic);">0.00%</div>
+                        <div style="font-size: 0.8rem; font-weight: 700; opacity: 0.5;">INTERCEPTION_RATE</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: User Testimonials -->
+        <section class="section-speed-ex" style="background: var(--c-paper); color: var(--c-obsidian);">
+            <div class="container">
+                <p style="text-transform: uppercase; letter-spacing: 0.5em; margin-bottom: 3rem; opacity: 0.5;">
+                    SYSTEM_FEEDBACK </p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
+                    <div style="background: var(--c-subtle); padding: 4rem; position: relative;">
+                        <div
+                            style="position: absolute; top: 1rem; right: 1rem; font-size: 4rem; opacity: 0.1; font-weight: 900;">
+                            "</div>
+                        <p style="font-size: 1.5rem; font-weight: 400; font-style: italic; line-height: 1.4;">"The Ghost
+                            Protocol changed our urban distribution model overnight. We now move high-value assets
+                            across Tokyo in under 4 minutes with zero metadata residue."</p>
+                        <hr style="margin-top: 2rem; border: none; border-top: 1px solid rgba(0,0,0,0.1);">
+                        <div style="margin-top: 2rem;">
+                            <h4 style="font-weight: 900; text-transform: uppercase;">[ ARATA_09 ]</h4>
+                            <p style="font-size: 0.8rem; opacity: 0.5; letter-spacing: 0.1em;">LOGISTICS_DIRECTOR //
+                                NEO_TOKYO</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--c-subtle); padding: 4rem; position: relative;">
+                        <div
+                            style="position: absolute; top: 1rem; right: 1rem; font-size: 4rem; opacity: 0.1; font-weight: 900;">
+                            "</div>
+                        <p style="font-size: 1.5rem; font-weight: 400; font-style: italic; line-height: 1.4;">
+                            "Atomic-level precision. In the medical research sector, speedEx is our only trusted carrier
+                            for fragile neural substrates."</p>
+                        <hr style="margin-top: 2rem; border: none; border-top: 1px solid rgba(0,0,0,0.1);">
+                        <div style="margin-top: 2rem;">
+                            <h4 style="font-weight: 900; text-transform: uppercase;">[ ELARA_VOID ]</h4>
+                            <p style="font-size: 0.8rem; opacity: 0.5; letter-spacing: 0.1em;">SYSTEM_ARCHITECT //
+                                BERLIN_NODE</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 10vh; text-align: center;">
+                    <a href="contact.html" class="big-text"
+                        style="font-size: 5vw; text-decoration: none; color: inherit; border-bottom: 5px solid var(--c-kinetic);">
+                        UPGRADE_TO_GHOST</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-info">
+                <div class="footer-logo">speedEx</div>
+                <p style="opacity: 0.5; max-width: 300px; line-height: 1.6;">
+                    Redefining the physical world through neural-optimized logistics and atomic-precision distribution.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h4>System</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">Manifesto</a></li>
+                    <li><a href="services.html">Systems</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="contact.html">Node Access</a></li>
+                    <li><a href="login.html">Command Interface</a></li>
+                    <li><a href="#">Support Signal</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Protocol Terms</a></li>
+                    <li><a href="#">Privacy Mesh</a></li>
+                    <li><a href="#">Encryption Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center;">
+            <div>© 2026 speedEx // ALL_SYSTEM_OPERATIONAL</div>
+            <div style="display: flex; gap: 1.5rem; align-items: center;">
+                <a href="https://instagram.com" target="_blank"
+                    style="color: inherit; text-decoration: none; opacity: 0.6; transition: var(--t-fast); display: inline-block;"
+                    onmouseover="this.style.opacity='1'; this.style.color='var(--c-kinetic)'"
+                    onmouseout="this.style.opacity='0.6'; this.style.color='inherit'" title="Instagram">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="square" stroke-linejoin="miter">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+                <a href="https://facebook.com" target="_blank"
+                    style="color: inherit; text-decoration: none; opacity: 0.6; transition: var(--t-fast); display: inline-block;"
+                    onmouseover="this.style.opacity='1'; this.style.color='var(--c-kinetic)'"
+                    onmouseout="this.style.opacity='0.6'; this.style.color='inherit'" title="Facebook">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="square" stroke-linejoin="miter">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                </a>
+                <a href="https://youtube.com" target="_blank"
+                    style="color: inherit; text-decoration: none; opacity: 0.6; transition: var(--t-fast); display: inline-block;"
+                    onmouseover="this.style.opacity='1'; this.style.color='var(--c-kinetic)'"
+                    onmouseout="this.style.opacity='0.6'; this.style.color='inherit'" title="YouTube">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="square" stroke-linejoin="miter">
+                        <path
+                            d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                        </path>
+                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="rtltoggle.js"></script>
+</body>
+
+</html>
