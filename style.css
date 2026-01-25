@@ -1,6 +1,8 @@
 :root {
     --c-obsidian: #050505;
+    --c-obsidian-rgb: 5, 5, 5;
     --c-paper: #fcfcfc;
+    --c-paper-rgb: 252, 252, 252;
     --c-kinetic: #ff3c00;
     /* High-VIS Orange */
     --c-void: #121212;
@@ -23,12 +25,18 @@ html {
     /* Global reduction */
 }
 
+.sidebar-close-btn {
+    display: none;
+}
+
 [data-theme="dark"] {
     --c-obsidian: #fcfcfc;
-    --c-paper: #050505;
-    --c-void: #1a1a1a;
-    --c-subtle: #1a1a1a;
-    --c-data-standard: #888888;
+    --c-obsidian-rgb: 252, 252, 252;
+    --c-paper: #0f1011;
+    --c-paper-rgb: 15, 16, 17;
+    --c-void: #18191a;
+    --c-subtle: #222426;
+    --c-data-standard: #aaaaaa;
     /* Solid Light Gray for Dark Mode */
 }
 
@@ -146,10 +154,10 @@ nav {
 }
 
 [data-theme="dark"] .nav-module {
-    background: var(--c-obsidian);
-    color: var(--c-paper);
+    background: var(--c-paper);
+    color: var(--c-obsidian);
     box-shadow: 8px 8px 0 var(--c-kinetic);
-    border-color: var(--c-paper);
+    border-color: var(--c-obsidian);
 }
 
 .nav-logo {
@@ -569,14 +577,14 @@ footer {
         top: 0 !important;
         left: 0 !important;
         width: 100% !important;
-        height: auto !important;
+        height: 60px !important;
         display: flex !important;
         flex-direction: row !important;
         justify-content: space-between !important;
         align-items: center !important;
-        background: transparent !important;
+        background: var(--c-paper) !important;
         border: none !important;
-        padding: 5px 5vw !important;
+        padding: 0 5vw !important;
         margin: 0 !important;
         z-index: 10000 !important;
         pointer-events: none !important;
@@ -804,12 +812,17 @@ footer {
         padding-right: 1rem !important;
     }
 
-    /* Grid protection for 2-column metrics */
-    div[style*="grid-template-columns: repeat(4, 1fr)"],
-    div[style*="display: grid"][style*="4, 1fr"] {
+    /* Grid protection for metrics - catch all industrial grids */
+    div[style*="grid-template-columns: repeat"],
+    div[style*="grid-template-columns: 2fr 1fr"],
+    div[style*="grid-template-columns: 1fr 1fr"],
+    div[style*="display: grid"][style*="1fr"] {
         display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 0.8rem !important;
+        grid-template-columns: 1fr !important;
+        /* Force 1 column on mobile */
+        width: 100% !important;
+        max-width: 100% !important;
+        gap: 1.5rem !important;
     }
 
     /* Metric Card Internal Padding Optimization */
@@ -847,6 +860,8 @@ footer {
     .core-layout div[style*="display: flex; gap: 1rem;"] {
         gap: 0.5rem !important;
     }
+
+    /* Remove conflicting label padding rule */
 
     /* Heatmap Legend Wrap */
     .core-layout div[style*="justify-content: space-between"][style*="opacity: 0.5"] {
@@ -912,12 +927,13 @@ footer {
         position: absolute !important;
     }
 
-    /* Force legends to stay on one line */
+    /* Force legends to stack on mobile */
     .terminal-main div[style*="gap: 2rem"],
     .core-layout div[style*="gap: 2rem"] {
-        gap: 0.5rem !important;
-        flex-wrap: nowrap !important;
+        gap: 1rem !important;
+        flex-wrap: wrap !important;
         display: flex !important;
+        justify-content: center !important;
     }
 
     .terminal-main span,
@@ -926,30 +942,52 @@ footer {
         font-size: 0.65rem !important;
     }
 
-    /* Fix Revenue Chart HEIGHT and OVERLAP */
-    /* SVG Line Chart Fix - Root Cause Correction */
-    .terminal-main div[style*="height: 250px"],
-    .core-layout div[style*="height: 250px"] {
-        height: 250px !important;
-        min-height: 250px !important;
-        min-width: 200px !important;
-        /* Prevent collapse */
-        width: 100% !important;
+    /* Fix Revenue Chart Box - Specifically target the one with a border */
+    .terminal-main div[style*="height: 250px"][style*="border"],
+    .core-layout div[style*="height: 250px"][style*="border"] {
+        height: 350px !important;
+        min-height: 350px !important;
+        width: auto !important;
+        flex: 1 !important;
         padding: 0 !important;
         position: relative !important;
         overflow: hidden !important;
-        /* Clip ends cleanly */
         background: rgba(0, 0, 0, 0.05) !important;
-        /* Make visible in light mode */
-        border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    }
+
+    /* Fix internal grid lines - Specifically target the background grid */
+    .terminal-main div[style*="justify-content: space-between"][style*="top"][style*="absolute"],
+    .core-layout div[style*="justify-content: space-between"][style*="top"][style*="absolute"] {
+        top: 1rem !important;
+        bottom: 1rem !important;
+        left: 0.5rem !important;
+        right: 0.5rem !important;
+        width: auto !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        /* STACK GRID LINES VERTICALLY */
+    }
+
+    /* Fix chart label containers (X-Axis) - MUST be horizontal rows */
+    .terminal-main div[style*="justify-content: space-between"][style*="bottom"][style*="absolute"]:not([style*="top"]),
+    .core-layout div[style*="justify-content: space-between"][style*="bottom"][style*="absolute"]:not([style*="top"]) {
+        flex-direction: row !important;
+        /* SPREAD LABELS HORIZONTALLY */
+        display: flex !important;
+        top: auto !important;
+        bottom: 0.2rem !important;
+        left: 0.5rem !important;
+        right: 0.5rem !important;
+        padding: 0 !important;
     }
 
     /* SVG MAPPING FIX - Unified Mobile Padding */
     svg[preserveAspectRatio="none"] {
         height: 100% !important;
         width: 100% !important;
-        padding: 0 !important;
-        /* Zero padding to prevent clipping */
+        padding: 0.5rem !important;
+        /* Minimal padding */
         margin: 0 !important;
         overflow: visible !important;
         z-index: 10 !important;
@@ -962,11 +1000,11 @@ footer {
     .terminal-main div[style*="column; justify-content: space-between"][style*="bottom: 3rem"],
     .core-layout div[style*="column; justify-content: space-between"][style*="bottom: 3rem"] {
         padding: 0 !important;
-        top: 0 !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        width: 100% !important;
+        top: 0.5rem !important;
+        bottom: 0.5rem !important;
+        left: 0.5rem !important;
+        right: 0.5rem !important;
+        width: auto !important;
     }
 
     /* FORCE VISIBILITY of Graph Lines */
@@ -1009,8 +1047,41 @@ footer {
     /* Target the large central count specifically */
     .terminal-main div[style*="font-size: 3rem"],
     .core-layout div[style*="font-size: 3rem"] {
-        font-size: 1.8rem !important;
+        font-size: 1.5rem !important;
+        /* Reduced from 1.8rem */
         line-height: 1 !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    /* Fix chart label containers (X-Axis) - MUST be horizontal */
+    .terminal-main div[style*="bottom: 0.5rem"],
+    .core-layout div[style*="bottom: 0.5rem"],
+    .terminal-main div[style*="bottom: 0px"],
+    .core-layout div[style*="bottom: 0px"] {
+        flex-direction: row !important;
+        /* Keep labels side-by-side */
+        display: flex !important;
+        justify-content: space-between !important;
+        left: 0.5rem !important;
+        right: 0.5rem !important;
+        width: auto !important;
+        bottom: 0.2rem !important;
+    }
+
+    /* Fix diagnostic metrics box widths */
+    .terminal-main div[style*="minmax(250px"],
+    .core-layout div[style*="minmax(250px"] {
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+        display: grid !important;
+    }
+
+    .terminal-main div[style*="background: rgba(255,255,255,0.05)"],
+    .core-layout div[style*="background: rgba(255,255,255,0.05)"] {
+        width: 100% !important;
+        min-width: 0 !important;
+        /* Allow shrinking */
     }
 
     /* Special geometric reset for the [PEAK] label and bars */
@@ -1040,8 +1111,48 @@ footer {
     div[style*="height"]:not([style*="%"]):not([style*="flex"]):not([style*="PROGRESS"]):not([style*="chart"]):not([style*="svg"]):not([style*="viewBox"]):not(.terminal-grid *):not(.core-layout *),
     section[style*="height"]:not([style*="%"]):not([style*="flex"]):not([style*="PROGRESS"]):not([style*="chart"]):not([style*="svg"]):not([style*="viewBox"]):not(.terminal-grid *):not(.core-layout *) {
         height: auto !important;
-        min-height: 250px !important;
+        min-height: 300px !important;
         width: 100% !important;
+    }
+
+    /* Force all SVGs to be visible and properly scaled */
+    .terminal-main svg,
+    .core-layout svg,
+    .core-content svg {
+        width: 100% !important;
+        height: auto !important;
+        max-height: 350px !important;
+        display: block !important;
+        overflow: visible !important;
+    }
+
+    /* Fix flex container for charts with Y-Axis */
+    .terminal-main div[style*="display: flex; gap: 1rem;"],
+    .core-layout div[style*="display: flex; gap: 1rem;"] {
+        display: flex !important;
+        flex-direction: row !important;
+        /* Keep labels and chart on same line */
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        gap: 0.5rem !important;
+        /* Tighter gap */
+        overflow: hidden !important;
+        align-items: flex-start !important;
+    }
+
+    /* Fix Y-Axis Labels container - Match chart box height and internal grid padding */
+    .terminal-main div[style*="height: 250px"]:not([style*="border"]):not([style*="absolute"]),
+    .core-layout div[style*="height: 250px"]:not([style*="border"]):not([style*="absolute"]) {
+        height: 350px !important;
+        width: 50px !important;
+        min-width: 50px !important;
+        padding: 1rem 0 !important;
+        /* Match the top/bottom 1rem of grid lines */
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        box-sizing: border-box !important;
     }
 
     /* Fix: Force visibility ONLY for 'STANDARD' bars, not the container */
@@ -1066,20 +1177,27 @@ footer {
     }
 
     /* Small data bars/progress bars reset - Snug fit */
+    div[style*="height: 150px"],
     div[style*="height: 100px"],
+    div[style*="height:150px"],
     div[style*="height:100px"] {
-        height: auto !important;
-        min-height: 40px !important;
+        height: 200px !important;
+        min-height: 200px !important;
+        width: 100% !important;
+        display: flex !important;
         overflow: visible !important;
-        /* Allow growth */
     }
 
     div[style*="monospace"] {
-        padding: 0.5rem !important;
-        font-size: 0.6rem !important;
-        line-height: 1.2 !important;
+        padding: 1rem !important;
+        font-size: 0.65rem !important;
+        line-height: 1.6 !important;
+        /* Increased line-height for readability */
         word-break: break-all !important;
-        white-space: normal !important;
+        white-space: pre-wrap !important;
+        /* Preserve line breaks but allow wrapping */
+        text-align: left !important;
+        background: rgba(0, 0, 0, 0.5) !important;
     }
 
     /* Diagnostic Table Overlap Fix */
@@ -1112,7 +1230,8 @@ footer {
     }
 
     .stat-giant {
-        font-size: 12vw !important;
+        font-size: 10vw !important;
+        /* Reduced from 12vw */
         line-height: 1 !important;
         margin: 1rem 0 !important;
     }
@@ -1131,9 +1250,9 @@ footer {
         display: flex !important;
     }
 
-    /* Fix absolute labels overlapping with centered titles - EXCEPT in data-heavy dashboard components */
-    *[style*="position: absolute"]:not(.terminal-grid *):not(.core-layout *),
-    *[style*="position:absolute"]:not(.terminal-grid *):not(.core-layout *) {
+    /* Fix absolute labels overlapping with centered titles - EXCEPT in data-heavy dashboard components AND mobile menu close button */
+    *[style*="position: absolute"]:not(.terminal-grid *):not(.core-layout *):not(.mobile-menu-close),
+    *[style*="position:absolute"]:not(.terminal-grid *):not(.core-layout *):not(.mobile-menu-close) {
         position: static !important;
         display: block !important;
         margin: 1rem auto !important;
@@ -1166,9 +1285,9 @@ footer {
     h4 {
         white-space: normal !important;
         /* Force wrap for 'nowrap' titles on index2.html */
-        word-break: keep-all !important;
-        /* Keep whole words integrated */
-        overflow-wrap: normal !important;
+        word-break: break-word !important;
+        /* Allow breaking for long words like SYSTEM_DIAGNOSTICS */
+        overflow-wrap: break-word !important;
         margin-top: 2rem !important;
         /* Neutralize negative margin-tops */
         margin-left: 0 !important;
@@ -1178,24 +1297,22 @@ footer {
     .big-text,
     h1,
     h2 {
-        font-size: 14vw !important;
-        /* Increased for better impact */
+        font-size: 8vw !important;
+        /* Reduced further from 10vw */
         line-height: 1.1 !important;
-        /* Increased to prevent word collision */
         text-align: center !important;
         letter-spacing: -0.05em !important;
+        word-break: break-all !important;
+        /* Force break for long strings */
     }
 
     h3,
     h4 {
-        font-size: 8vw !important;
-        /* Adjusted for hierarchy */
+        font-size: 6vw !important;
+        /* Reduced from 8vw */
         line-height: 1.2 !important;
         text-align: center !important;
-        word-break: normal !important;
-        white-space: normal !important;
-        overflow-wrap: break-word !important;
-        margin: 1.5rem 0 !important;
+        word-break: break-all !important;
     }
 
     th {
@@ -1269,14 +1386,14 @@ footer {
         padding-bottom: 2rem !important;
     }
 
-    /* Force full width for elements that had restrictions - EXCEPT dashboard data elements */
+    /* Force full width for elements that had restrictions - EXCEPT dashboard data elements AND mobile menu close button */
     *[style*="width: 50%"]:not(.terminal-grid *):not(.core-layout *),
     *[style*="width:50%"]:not(.terminal-grid *):not(.core-layout *),
     *[style*="width: 40%"]:not(.terminal-grid *):not(.core-layout *),
     *[style*="width:40%"]:not(.terminal-grid *):not(.core-layout *),
     *[style*="width: 60%"]:not(.terminal-grid *):not(.core-layout *),
     *[style*="width:60%"]:not(.terminal-grid *):not(.core-layout *),
-    *[style*="position: absolute"]:not(.terminal-grid *):not(.core-layout *),
+    *[style*="position: absolute"]:not(.terminal-grid *):not(.core-layout *):not(.mobile-menu-close),
     .image-layer,
     .big-text,
     p {
@@ -1320,8 +1437,25 @@ footer {
 
     p {
         max-width: 100% !important;
-        text-align: center !important;
+        text-align: left !important;
+        /* Changed to left for clarity, specifically for logs */
         margin-bottom: 2rem !important;
+    }
+
+    /* Center alignment for dashboard section headers on mobile */
+    .core-content h2,
+    .core-content h3,
+    .terminal-main h1,
+    .terminal-main h2 {
+        text-align: center !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Keep left alignment for non-dashboard paragraphs if needed */
+    body:not(.terminal-grid):not(.core-layout) p {
+        text-align: center !important;
     }
 
     /* Image stack responsiveness */
@@ -1380,83 +1514,338 @@ footer {
         border: 2px solid var(--c-obsidian) !important;
     }
 
-    /* Dashboard grids - Strict Containment */
-    .core-metrics,
-    .core-content,
+    /* Dashboard Content Stacking & Alignment */
     .terminal-grid,
-    .terminal-main {
-        grid-template-columns: 1fr !important;
-        padding-left: 5vw !important;
-        padding-right: 5vw !important;
+    .core-layout {
+        display: block !important;
+        margin-top: 80px !important;
+        /* Clear fixed nav */
+        padding: 2rem 5vw !important;
         width: 100% !important;
-        max-width: 100vw !important;
-        overflow-x: hidden !important;
         box-sizing: border-box !important;
     }
 
+    .terminal-main,
+    .core-content,
+    .core-metrics {
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: block !important;
+    }
+
+    /* Section Spacing */
+    .terminal-main>div,
+    .core-content>div,
+    .core-content>section,
+    .terminal-main>section {
+        margin-bottom: 4rem !important;
+        width: 100% !important;
+        clear: both;
+    }
+
+    /* Horizontal flex containers protection (Charts, Legends, Navs) */
+    .terminal-main div[style*="display: flex"]:not([style*="flex-direction: column"]),
+    .core-content div[style*="display: flex"]:not([style*="flex-direction: column"]),
+    .terminal-main div[style*="align-items: flex-end"],
+    .core-layout div[style*="align-items: flex-end"] {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: visible !important;
+    }
+
+    /* Titles Scaling - Prevents Overlaps */
+    .terminal-main h1,
+    .core-content h1 {
+        font-size: 10vw !important;
+        word-wrap: break-word;
+    }
+
+    .terminal-main h2,
+    .core-content h2 {
+        font-size: 8vw !important;
+        margin-bottom: 2rem !important;
+    }
+
+    .terminal-main h3,
+    .core-content h3 {
+        font-size: 7vw !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    .terminal-main h4,
+    .core-content h4 {
+        font-size: 6vw !important;
+    }
+
+    /* Fix LOGO/Nav overlap in Dashboard Header */
+    .core-header,
+    .terminal-main>div:first-of-type {
+        padding-top: 1.5rem !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+    }
+
+    .core-header h1,
+    .terminal-main h1 {
+        margin-top: 0 !important;
+        text-align: left !important;
+        position: relative !important;
+        line-height: 1 !important;
+    }
+
+    /* SPECIFIC FIX: Log boxes wrapping */
+    [style*="monospace"],
+    .data-stream {
+        width: 100% !important;
+        padding: 1.5rem !important;
+        font-size: 0.8rem !important;
+        white-space: pre-wrap !important;
+        overflow-wrap: break-word !important;
+        display: block !important;
+        margin: 1.5rem 0 !important;
+    }
+
+    /* --- Standard Dashboard Layout --- */
     .terminal-grid,
     .core-layout {
-        margin-top: 0 !important;
-        padding-top: 2rem !important;
-        /* Visual breathing room */
+        display: block !important;
+        margin-top: 100px !important;
+        /* Slightly tighter clearance */
+        padding: 0 5vw !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
 
-    /* Dashboard Mobile Nav Bar */
+    .terminal-main,
+    .core-content,
+    .core-metrics {
+        display: block !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Core Section Stacking */
+    .terminal-main>*,
+    .core-content>* {
+        margin-bottom: 3rem !important;
+        width: 100% !important;
+        display: block !important;
+        clear: both;
+    }
+
+    /* Titles Scaling (Prevents Clipping/Overlap) */
+    .terminal-main h1,
+    .core-content h1 {
+        font-size: 11vw !important;
+        line-height: 1.1 !important;
+        margin-bottom: 2rem !important;
+        white-space: normal !important;
+    }
+
+    .terminal-main h2,
+    .core-content h2 {
+        font-size: 9vw !important;
+        line-height: 1.2 !important;
+        white-space: normal !important;
+    }
+
+    .terminal-main h3,
+    .core-content h3 {
+        font-size: 7.5vw !important;
+        line-height: 1.2 !important;
+        white-space: normal !important;
+    }
+
+    /* BAR CHART FIX: Preserve horizontal flow for bar containers */
+    div[style*="align-items: flex-end"] {
+        display: flex !important;
+        flex-direction: row !important;
+        width: 100% !important;
+        height: 350px !important;
+        /* Increased for better visibility */
+        gap: 0.3rem !important;
+        /* Tighter gap for small screens */
+        padding-left: 2rem !important;
+        /* Room for Y labels */
+        box-sizing: border-box !important;
+        align-items: flex-end !important;
+    }
+
+    div[style*="align-items: flex-end"]>div {
+        flex: 1 !important;
+        width: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    /* Dashboard Grid Columns Neutralization */
+    div[style*="grid-template-columns: 2fr 1fr"],
+    div[style*="grid-template-columns: 1fr 1fr"] {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    /* Heatmap/Grid Capacity Fix - Don't stack vertically, just reduce columns */
+    div[style*="grid-template-columns: repeat(8"] {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 0.5rem !important;
+        padding: 1.5rem !important;
+    }
+
+    /* Image Scaling for Dashboards */
+    .terminal-main img,
+    .core-content img,
+    .core-layout img {
+        max-width: 100% !important;
+        height: auto !important;
+        display: block !important;
+        margin: 1rem auto !important;
+    }
+
+    /* Dashboard Mobile Nav Standardization */
     .dash-mobile-nav {
         display: flex !important;
-        position: sticky !important;
+        position: fixed !important;
         top: 60px !important;
         left: 0 !important;
-        width: 100vw !important;
-        background: var(--c-obsidian) !important;
+        width: 100% !important;
+        height: 50px !important;
+        background: var(--c-paper) !important;
         border-bottom: 2px solid var(--c-kinetic) !important;
-        z-index: 9000 !important;
-        padding: 0 !important;
+        z-index: 900 !important;
         overflow-x: auto !important;
-        scrollbar-width: none !important;
-        -ms-overflow-style: none !important;
-    }
-
-    .dash-mobile-nav::-webkit-scrollbar {
-        display: none !important;
     }
 
     .dash-nav-container {
         display: flex !important;
-        padding: 0 5vw !important;
-        gap: 1.5rem !important;
-        align-items: center !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        justify-content: space-around !important;
     }
 
-    .dash-mobile-nav .sidebar-link {
-        padding: 0.6rem 0 !important;
-        font-size: 0.7rem !important;
-        white-space: nowrap !important;
-        border-left: none !important;
-        border-bottom: 3px solid transparent !important;
+    .dash-nav-container .sidebar-link {
+        color: var(--c-obsidian) !important;
         opacity: 0.6 !important;
-        color: var(--c-paper) !important;
+        border-bottom: 3px solid transparent !important;
+        height: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        padding: 0 2px !important;
+        font-size: 0.65rem !important;
+        white-space: nowrap !important;
+        flex: 1 !important;
+        justify-content: center !important;
     }
 
-    .dash-mobile-nav .sidebar-link.active {
+    .dash-nav-container .sidebar-link.active {
         opacity: 1 !important;
+        color: var(--c-kinetic) !important;
         border-bottom-color: var(--c-kinetic) !important;
     }
 
+    /* SPECIFIC FIX: Pie Chart Legends & Percentages */
+    .terminal-main div[style*="justify-content: space-between"][style*="align-items: center"],
+    .core-content div[style*="justify-content: space-between"][style*="align-items: center"] {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: 1rem !important;
+    }
+
+    .terminal-main div[style*="font-size: 2rem"],
+    .core-content div[style*="font-size: 2rem"] {
+        font-size: 1.5rem !important;
+        /* Scale down giant percentages */
+        min-width: fit-content !important;
+    }
+
+    /* Prevent text collision in legend */
+    .terminal-main div[style*="padding-left: 1.5rem"],
+    .core-content div[style*="padding-left: 1.5rem"] {
+        padding-left: 1rem !important;
+    }
+
+    /* Force Legend Items to Column on very small screens to avoid overlaps */
+    @media (max-width: 480px) {
+
+        .terminal-main div[style*="justify-content: space-between"][style*="align-items: center"],
+        .core-content div[style*="justify-content: space-between"][style*="align-items: center"] {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 0.2rem !important;
+        }
+
+        .terminal-main div[style*="font-size: 2rem"],
+        .core-content div[style*="font-size: 2rem"] {
+            font-size: 1.2rem !important;
+            margin-bottom: 0.5rem !important;
+        }
+    }
+
+    .dash-nav-container {
+        display: flex !important;
+        padding: 0 1rem !important;
+        gap: 1.5rem !important;
+        align-items: center !important;
+        height: 100% !important;
+    }
+
+    /* Hidden/Removed Elements */
     .terminal-sidebar,
     .core-sidebar,
     .sidebar-toggle,
-    #menu-toggle {
+    .vertical-text {
         display: none !important;
     }
 
-    .terminal-grid,
-    .core-layout {
-        display: block !important;
-        grid-template-columns: 1fr !important;
-        margin-top: 0 !important;
-        padding-top: 1rem !important;
-        padding-bottom: 0 !important;
+    /* Tables Optimization */
+    .node-table-wrapper,
+    .table-container {
+        width: 100% !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        margin-bottom: 2rem !important;
+    }
+
+    .node-table,
+    table {
+        font-size: 0.65rem !important;
+        width: 100% !important;
+        min-width: 600px;
+        /* Force scroll on very small screens instead of squishing */
+    }
+
+    .node-table td,
+    table td {
+        padding: 1rem 0.5rem !important;
+    }
+
+    /* --- Standard Global Nav Mobile --- */
+    nav {
+        height: 60px !important;
+        display: flex !important;
+        align-items: center !important;
+        padding: 0 1rem !important;
+    }
+
+    .nav-module.nav-links {
+        display: none !important;
+    }
+
+    /* LOGO POSITIVE CONTROL */
+    .nav-logo,
+    .brand {
+        font-size: 1.2rem !important;
+        padding: 0.5rem 0.8rem !important;
+        background: white !important;
+        color: black !important;
+        font-weight: 1000 !important;
     }
 }
 
@@ -1478,6 +1867,42 @@ footer {
     section[style*="padding-top"]:first-of-type {
         padding-top: 0 !important;
         margin-top: -1rem !important;
+    }
+
+    /* MONOSPACE LOG FIX - Ensure readable wrapping */
+    div[style*="monospace"]:empty,
+    .data-stream:empty,
+    [style*="font-family: monospace"]:empty {
+        display: none !important;
+    }
+
+    div[style*="monospace"],
+    .data-stream,
+    [style*="font-family: monospace"],
+    .core-content div[style*="font-family: monospace"],
+    .terminal-main div[style*="font-family: monospace"] {
+        padding: 1.5rem !important;
+        font-size: 0.8rem !important;
+        line-height: 1.6 !important;
+        word-break: normal !important;
+        overflow-wrap: break-word !important;
+        white-space: pre-wrap !important;
+        text-align: left !important;
+        background: rgba(0, 0, 0, 0.6) !important;
+        width: 100% !important;
+        min-width: 100% !important;
+        display: block !important;
+        box-sizing: border-box !important;
+        border: 2px solid rgba(255, 255, 255, 0.1) !important;
+        margin: 1.5rem 0 !important;
+        min-height: 150px !important;
+    }
+
+    /* Map visibility boost */
+    .core-content img[style*="opacity: 0.3"],
+    .terminal-main img[style*="opacity: 0.3"] {
+        opacity: 0.6 !important;
+        filter: grayscale(0.5) !important;
     }
 }
 
@@ -1504,6 +1929,16 @@ footer {
     align-items: center !important;
     padding: 0 !important;
     overflow-y: auto;
+}
+
+.mobile-menu-close {
+    transition: var(--t-fast);
+}
+
+.mobile-menu-close:hover {
+    transform: rotate(90deg) scale(1.1);
+    background: var(--c-obsidian) !important;
+    color: var(--c-paper) !important;
 }
 
 .mobile-menu-overlay.active {
@@ -1645,7 +2080,8 @@ footer {
 .hamburger {
     display: none;
     cursor: pointer;
-    z-index: 10000;
+    z-index: 12100;
+    /* ABOVE OVERLAY (11000) and CLOSE BUTTON (12000) */
 }
 
 @media (max-width: 1024px) {
@@ -1767,8 +2203,8 @@ footer {
 }
 
 [data-theme="dark"] .auth-btn {
-    background: var(--c-obsidian);
-    color: var(--c-paper);
+    background: var(--c-paper);
+    color: var(--c-obsidian);
 }
 
 .auth-btn:hover {
@@ -1895,5 +2331,104 @@ footer {
         gap: 0.5rem !important;
         padding-top: 1rem !important;
         text-align: center !important;
+    }
+}
+
+/* Analytics Grid Responsive Styles */
+.analytics-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    .analytics-row {
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+    }
+
+    .analytics-row h4 {
+        font-size: 0.65rem !important;
+        white-space: normal !important;
+        overflow-wrap: break-word !important;
+        word-wrap: break-word !important;
+        max-width: 100%;
+        line-height: 1.2;
+    }
+
+    .analytics-row>div {
+        min-width: 0;
+        max-width: 100%;
+    }
+}
+
+
+/* Responsive Grid Utilities for Admin Dashboard */
+.grid-split-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.grid-split-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.grid-split-2-1 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+}
+
+.grid-split-arch {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3rem;
+}
+
+@media (max-width: 1024px) {
+
+    .grid-split-2,
+    .grid-split-3,
+    .grid-split-2-1,
+    .grid-split-arch {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+
+    .grid-split-2-1 {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 3rem !important;
+    }
+}
+
+/* FINAL MOBILE CLEANUP */
+@media (max-width: 1024px) {
+
+    /* Ensure absolute elements in charts behave */
+    .terminal-main [style*="position: absolute"],
+    .core-layout [style*="position: absolute"],
+    .core-content [style*="position: absolute"] {
+        width: auto !important;
+        max-width: 100% !important;
+    }
+
+    /* Metric cards 2-column on small screens */
+    .core-metrics {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1rem !important;
+    }
+
+    .metric-item {
+        padding: 1.5rem !important;
+    }
+
+    .admin-big {
+        font-size: 1.5rem !important;
     }
 }

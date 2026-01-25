@@ -1,0 +1,148 @@
+<!-- ADDED ADMIN ANALYTICS CLUSTER -->
+<div style="margin-top: 6rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 4rem;">
+    <h2 style="margin-bottom: 3rem;">DEEP_LAYER_METRICS</h2>
+
+    <!-- ROW 1 -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+        <!-- CHART 1: REVENUE FLOW (Curved Area) -->
+        <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+                <h4 style="margin:0; font-size:0.8rem; color:var(--c-kinetic);">NET_MARGIN_FLOW</h4>
+                <span style="font-size:0.7rem; opacity:0.5;">Q3</span>
+            </div>
+            <div style="height: 150px; width: 100%;">
+                <svg viewBox="0 0 100 40" preserveAspectRatio="none" style="width:100%; height:100%;">
+                    <path d="M0,35 C20,35 20,10 40,10 C60,10 60,30 80,30 C90,30 90,5 100,5 L100,40 L0,40 Z"
+                        fill="rgba(255, 60, 0, 0.15)" stroke="none" />
+                    <path d="M0,35 C20,35 20,10 40,10 C60,10 60,30 80,30 C90,30 90,5 100,5" fill="none"
+                        stroke="var(--c-kinetic)" stroke-width="2" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- CHART 2: INFRASTRUCTURE COST (Vertical Stacked) -->
+        <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+                <h4 style="margin:0; font-size:0.8rem; color:white;">INFRA_COST</h4>
+                <span style="font-size:0.7rem; opacity:0.5;">MNTH</span>
+            </div>
+            <div style="display:flex; height: 150px; align-items:flex-end; gap:0.8rem; justify-content:space-between;">
+                <!-- Bar 1 -->
+                <div style="flex:1; display:flex; flex-direction:column; gap:2px; height:60%;">
+                    <div style="flex:1; background:rgba(255,255,255,0.3);"></div>
+                    <div style="flex:2; background:var(--c-kinetic);"></div>
+                </div>
+                <!-- Bar 2 -->
+                <div style="flex:1; display:flex; flex-direction:column; gap:2px; height:80%;">
+                    <div style="flex:1; background:rgba(255,255,255,0.3);"></div>
+                    <div style="flex:1; background:white;"></div>
+                </div>
+                <!-- Bar 3 -->
+                <div style="flex:1; display:flex; flex-direction:column; gap:2px; height:40%;">
+                    <div style="flex:2; background:var(--c-kinetic);"></div>
+                    <div style="flex:1; background:rgba(255,255,255,0.3);"></div>
+                </div>
+                <!-- Bar 4 -->
+                <div style="flex:1; display:flex; flex-direction:column; gap:2px; height:90%;">
+                    <div style="flex:1; background:white;"></div>
+                    <div style="flex:3; background:var(--c-kinetic);"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ROW 2 -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+        <!-- CHART 3: PROTOCOL_USAGE (Donut) -->
+        <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+                <h4 style="margin:0; font-size:0.8rem; color:var(--c-kinetic);">PROTO_DIST</h4>
+                <span style="font-size:0.7rem; opacity:0.5;">UDP/TCP</span>
+            </div>
+            <div style="height: 150px; display:flex; justify-content:center; position:relative;">
+                <svg viewBox="0 0 36 36" style="height:100%;">
+                    <!-- Segments -->
+                    <circle cx="18" cy="18" r="15.9155" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="4" />
+                    <circle cx="18" cy="18" r="15.9155" fill="none" stroke="var(--c-kinetic)" stroke-width="4"
+                        stroke-dasharray="60, 100" />
+                    <circle cx="18" cy="18" r="15.9155" fill="none" stroke="white" stroke-width="4"
+                        stroke-dasharray="20, 100" stroke-dashoffset="-60" />
+                </svg>
+                <div
+                    style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:50px; text-align:center;">
+                    <div style="font-size:0.6rem; opacity:0.6;">HTTP/3</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHART 4: INCIDENT_DENSITY (Heatmap Grid) -->
+        <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+                <h4 style="margin:0; font-size:0.8rem; color:white;">RISK_GRID</h4>
+                <span style="font-size:0.7rem; opacity:0.5;">SEC_L2</span>
+            </div>
+            <div style="height: 150px; display:grid; grid-template-columns:repeat(5, 1fr); gap:4px;">
+                <div style="background:rgba(255, 60, 0, 0.1);"></div>
+                <div style="background:rgba(255, 60, 0, 0.4);"></div>
+                <div style="background:rgba(255, 60, 0, 0.1);"></div>
+                <div style="background:rgba(255, 60, 0, 0.05);"></div>
+                <div style="background:rgba(255, 60, 0, 0.1);"></div>
+                <div style="background:rgba(255, 60, 0, 0.2);"></div>
+                <div style="background:rgba(255, 60, 0, 0.8);"></div>
+                <div style="background:rgba(255, 60, 0, 0.2);"></div>
+                <div style="background:rgba(255, 60, 0, 0.1);"></div>
+                <div style="background:rgba(255, 60, 0, 0.3);"></div>
+                <div style="background:rgba(255, 60, 0, 0.05);"></div>
+                <div style="background:rgba(255, 60, 0, 0.3);"></div>
+                <div style="background:rgba(255, 60, 0, 0.6);"></div>
+                <div style="background:rgba(255, 60, 0, 0.1);"></div>
+                <div style="background:rgba(255, 60, 0, 0.1);"></div>
+                <div style="background:rgba(255, 60, 0, 0.1);"></div>
+                <div style="background:rgba(255, 60, 0, 0.1);"></div>
+                <div style="background:rgba(255, 60, 0, 0.2);"></div>
+                <div style="background:rgba(255, 60, 0, 0.4);"></div>
+                <div style="background:rgba(255, 60, 0, 0.05);"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ROW 3 -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+        <!-- CHART 5: ENCRYPTION_SHA (Binary/Bar) -->
+        <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+                <h4 style="margin:0; font-size:0.8rem;">CRYPT_LOAD</h4>
+                <span style="font-size:0.7rem; opacity:0.5;">AES-256</span>
+            </div>
+            <div style="height: 150px; display:flex; align-items:center; gap:2px; overflow:hidden;">
+                <!-- Simulated complex barcode/usage -->
+                <div style="flex:1; height:40%; background:var(--c-kinetic);"></div>
+                <div style="flex:1; height:60%; background:white;"></div>
+                <div style="flex:1; height:30%; background:var(--c-kinetic);"></div>
+                <div style="flex:1; height:80%; background:white;"></div>
+                <div style="flex:1; height:50%; background:var(--c-kinetic);"></div>
+                <div style="flex:1; height:20%; background:white;"></div>
+                <div style="flex:1; height:90%; background:var(--c-kinetic);"></div>
+                <div style="flex:1; height:40%; background:white;"></div>
+                <div style="flex:1; height:70%; background:var(--c-kinetic);"></div>
+                <div style="flex:1; height:30%; background:white;"></div>
+            </div>
+        </div>
+
+        <!-- CHART 6: DATACENTER_TEMP (Line + Fill) -->
+        <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+                <h4 style="margin:0; font-size:0.8rem; color:var(--c-kinetic);">THERMAL_CORE</h4>
+                <span style="font-size:0.7rem; opacity:0.5;">65°C</span>
+            </div>
+            <div style="height: 150px; width:100%; position:relative;">
+                <svg viewBox="0 0 100 40" preserveAspectRatio="none" style="width:100%; height:100%;">
+                    <polygon points="0,40 10,30 20,32 30,28 40,35 50,30 60,32 70,20 80,25 90,15 100,20 100,40"
+                        fill="rgba(255,255,255,0.1)" stroke="none" />
+                    <polyline points="0,30 10,20 20,22 30,18 40,25 50,20 60,22 70,10 80,15 90,5 100,10" fill="none"
+                        stroke="white" stroke-width="1.5" />
+                </svg>
+            </div>
+        </div>
+    </div>
+</div>

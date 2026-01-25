@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (rtlToggle) {
         // Initial state
+
         rtlToggle.addEventListener('click', () => {
             const isRtl = html.getAttribute('dir') === 'rtl';
             if (isRtl) {
@@ -19,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 html.setAttribute('dir', 'rtl');
                 localStorage.setItem('rtl', 'true');
             }
+
             // Trigger a custom event for other scripts to respond to RTL change if needed
             window.dispatchEvent(new CustomEvent('rtlChanged', { detail: { isRtl: !isRtl } }));
         });

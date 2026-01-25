@@ -1,0 +1,135 @@
+<!-- ADDED ANALYTICS CLUSTER -->
+<div style="margin-top: 6rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 4rem;">
+    <h2 style="margin-bottom: 3rem;">LIVE_SYSTEM_TELEMETRY</h2>
+
+    <!-- ROW 1 -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+        <!-- CHART 1: NODE_LATENCY (Line) -->
+        <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+                <h4 style="margin:0; font-size:0.8rem; color:var(--c-kinetic);">NODE_LATENCY_MS</h4>
+                <span style="font-size:0.7rem; opacity:0.5;">LIVE</span>
+            </div>
+            <div style="height: 150px; width: 100%;">
+                <svg viewBox="0 0 100 40" preserveAspectRatio="none" style="width:100%; height:100%;">
+                    <path d="M0,30 Q10,32 20,25 T40,20 T60,28 T80,15 T100,20" fill="none" stroke="var(--c-kinetic)"
+                        stroke-width="1.5" />
+                    <path d="M0,35 Q10,37 20,30 T40,25 T60,33 T80,20 T100,25" fill="none" stroke="white"
+                        stroke-width="1" stroke-dasharray="2 2" opacity="0.5" />
+                    <!-- Grid -->
+                    <line x1="0" y1="10" x2="100" y2="10" stroke="white" stroke-width="0.1" opacity="0.3" />
+                    <line x1="0" y1="20" x2="100" y2="20" stroke="white" stroke-width="0.1" opacity="0.3" />
+                    <line x1="0" y1="30" x2="100" y2="30" stroke="white" stroke-width="0.1" opacity="0.3" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- CHART 2: BUFFER_USAGE (Gauge/Donut) -->
+        <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+                <h4 style="margin:0; font-size:0.8rem; color:white;">BUFFER_HEALTH</h4>
+                <span style="font-size:0.7rem; opacity:0.5;">OPTIMAL</span>
+            </div>
+            <div style="height: 150px; display:flex; justify-content:center; position:relative;">
+                <svg viewBox="0 0 36 36" style="height:100%;">
+                    <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none"
+                        stroke="rgba(255,255,255,0.1)" stroke-width="3" />
+                    <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none"
+                        stroke="var(--c-kinetic)" stroke-width="3" stroke-dasharray="75, 100" />
+                </svg>
+                <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center;">
+                    <div style="font-size:1.5rem; font-weight:900;">75%</div>
+                    <div style="font-size:0.6rem; opacity:0.5;">LOAD</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ROW 2 -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+        <!-- CHART 3: REGIONAL_PACKET_LOSS (Bar) -->
+        <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+                <h4 style="margin:0; font-size:0.8rem; color:var(--c-kinetic);">PACKET_LOSS_REGION</h4>
+                <span style="font-size:0.7rem; opacity:0.5;">%</span>
+            </div>
+            <div style="display:flex; height: 150px; align-items:flex-end; gap:0.5rem;">
+                <div style="flex:1; height:20%; background:rgba(255,255,255,0.3);"></div>
+                <div style="flex:1; height:45%; background:rgba(255,255,255,0.3);"></div>
+                <div style="flex:1; height:10%; background:var(--c-kinetic);"></div>
+                <div style="flex:1; height:30%; background:rgba(255,255,255,0.3);"></div>
+                <div style="flex:1; height:60%; background:rgba(255,255,255,0.3);"></div>
+                <div style="flex:1; height:25%; background:rgba(255,255,255,0.3);"></div>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-top:0.5rem; font-size:0.6rem; opacity:0.5;">
+                <span>US</span><span>EU</span><span>AS</span><span>AF</span><span>SA</span><span>OC</span>
+            </div>
+        </div>
+
+        <!-- CHART 4: ACTIVE_SESSIONS (Area) -->
+        <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+                <h4 style="margin:0; font-size:0.8rem; color:white;">SESSION_VOLUME</h4>
+                <span style="font-size:0.7rem; opacity:0.5;">24H</span>
+            </div>
+            <div style="height: 150px; width: 100%;">
+                <svg viewBox="0 0 100 40" preserveAspectRatio="none" style="width:100%; height:100%;">
+                    <polygon points="0,40 20,30 40,35 60,10 80,20 100,5 100,40" fill="rgba(255, 60, 0, 0.2)"
+                        stroke="none" />
+                    <polyline points="0,40 20,30 40,35 60,10 80,20 100,5" fill="none" stroke="var(--c-kinetic)"
+                        stroke-width="1.5" />
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- ROW 3 -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+        <!-- CHART 5: ERROR_DISTRIBUTION (Stacked Bar) -->
+        <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+                <h4 style="margin:0; font-size:0.8rem;">ERROR_TYPES</h4>
+                <span style="font-size:0.7rem; opacity:0.5;">LOG</span>
+            </div>
+            <div style="height: 150px; display:flex; flex-direction:column; gap:0.5rem; justify-content:center;">
+                <div
+                    style="width:100%; height:8px; background:rgba(255,255,255,0.1); border-radius:4px; overflow:hidden;">
+                    <div style="width:30%; height:100%; background:var(--c-kinetic);"></div>
+                </div>
+                <div
+                    style="width:100%; height:8px; background:rgba(255,255,255,0.1); border-radius:4px; overflow:hidden;">
+                    <div style="width:45%; height:100%; background:white;"></div>
+                </div>
+                <div
+                    style="width:100%; height:8px; background:rgba(255,255,255,0.1); border-radius:4px; overflow:hidden;">
+                    <div style="width:15%; height:100%; background:gray;"></div>
+                </div>
+                <div style="display:flex; gap:1rem; font-size:0.6rem; margin-top:0.5rem;">
+                    <span style="color:var(--c-kinetic)">● CRITICAL</span>
+                    <span style="color:white">● WARN</span>
+                    <span style="color:gray">● INFO</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHART 6: MEMORY_ALLOCATION (Scatter/Dot) -->
+        <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+                <h4 style="margin:0; font-size:0.8rem; color:var(--c-kinetic);">THREAD_ALLOC</h4>
+                <span style="font-size:0.7rem; opacity:0.5;">CORE_01</span>
+            </div>
+            <div style="height: 150px; width:100%; position:relative;">
+                <svg viewBox="0 0 100 50" style="width:100%; height:100%;">
+                    <circle cx="10" cy="40" r="2" fill="white" opacity="0.5" />
+                    <circle cx="30" cy="20" r="3" fill="var(--c-kinetic)" opacity="0.8" />
+                    <circle cx="50" cy="35" r="2" fill="white" opacity="0.6" />
+                    <circle cx="70" cy="10" r="4" fill="var(--c-kinetic)" />
+                    <circle cx="90" cy="30" r="2" fill="white" opacity="0.4" />
+                    <circle cx="20" cy="15" r="1.5" fill="white" opacity="0.3" />
+                    <circle cx="60" cy="45" r="2.5" fill="var(--c-kinetic)" opacity="0.6" />
+                    <line x1="0" y1="25" x2="100" y2="25" stroke="white" stroke-width="0.2" opacity="0.2" />
+                </svg>
+            </div>
+        </div>
+    </div>
+</div>

@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="style.css">
     <style>
         body {
-            background: var(--c-obsidian);
-            color: var(--c-paper);
+            background: var(--c-paper);
+            color: var(--c-obsidian);
             position: relative;
             overflow-x: hidden;
             max-width: 100%;
@@ -44,7 +44,7 @@
             margin-top: 120px;
             position: relative;
             z-index: 1;
-            background: var(--c-obsidian);
+            background: var(--c-paper);
             max-width: 100%;
             margin-left: auto;
             margin-right: auto;
@@ -86,14 +86,14 @@
 
         .core-header {
             grid-area: header;
-            border-bottom: 2px solid white;
+            border-bottom: 2px solid var(--c-obsidian);
             padding: 0 7vw 1rem 7vw;
             position: relative;
             z-index: 1;
         }
 
         [data-theme="dark"] .core-header {
-            border-bottom: 2px solid var(--c-obsidian);
+            border-bottom: 2px solid var(--c-paper);
         }
 
         .core-metrics {
@@ -111,20 +111,24 @@
             padding: 0.5rem 7vw;
             position: relative;
             z-index: 1;
-            background: var(--c-obsidian);
+            background: var(--c-paper);
             overflow-y: visible;
             min-height: 500px;
         }
 
         .core-sidebar {
             grid-area: sidebar;
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            border-right: 1px solid rgba(var(--c-obsidian-rgb), 0.1);
             padding-right: 2rem;
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
             transition: transform 0.3s ease;
-            background: var(--c-obsidian);
+            background: var(--c-paper);
+            position: sticky;
+            top: 120px;
+            height: calc(100vh - 120px);
+            overflow-y: auto;
         }
 
         .core-sidebar.hidden {
@@ -141,7 +145,7 @@
         .sidebar-link {
             display: block;
             padding: 1rem 0;
-            color: var(--c-paper);
+            color: var(--c-obsidian);
             text-decoration: none;
             opacity: 0.6;
             transition: var(--t-fast);
@@ -170,7 +174,6 @@
                     "content";
                 padding-left: 5vw;
                 padding-right: 5vw;
-                margin-top: 0 !important;
             }
 
             .sidebar-toggle {
@@ -184,7 +187,7 @@
                 height: calc(100vh - 70px);
                 width: 250px;
                 z-index: 998;
-                background: var(--c-obsidian);
+                background: var(--c-paper);
                 border-right: 2px solid rgba(255, 255, 255, 0.2);
                 overflow-y: auto;
                 transform: translateX(-100%);
@@ -215,16 +218,12 @@
         }
 
         .metric-item {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(var(--c-obsidian-rgb), 0.04);
             padding: 2rem;
             border-left: 5px solid var(--c-kinetic);
             position: relative;
             z-index: 1;
-        }
-
-        [data-theme="dark"] .metric-item {
-            background: rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(var(--c-obsidian-rgb), 0.05);
         }
 
         .admin-big {
@@ -232,10 +231,7 @@
             font-weight: 900;
         }
 
-        /* Light mode chart containers */
-        [data-theme="dark"] .core-content>div {
-            border: 1px solid rgba(0, 0, 0, 0.1) !important;
-        }
+        /* Clear redundant logic */
     </style>
 </head>
 
@@ -262,8 +258,8 @@
             </select>
         </div>
         <div class="nav-module nav-actions">
+            <button id="theme-toggle" class="icon-btn">☀️</button>
             <button id="rtl-toggle" class="icon-btn">🌐</button>
-            <button id="theme-toggle" class="icon-btn">🌗</button>
             <button class="nav-btn" onclick="location.href='login.html'">LOGIN</button>
         </div>
     </nav>
@@ -279,6 +275,8 @@
 
     <div class="core-layout">
         <aside class="core-sidebar">
+            <button class="sidebar-close-btn" id="sidebar-close"
+                onclick="document.querySelector('.core-sidebar').classList.remove('visible')">✕</button>
             <div style="font-weight: 900; margin-bottom: 2rem; color: var(--c-kinetic);">[ ADMIN_CORE ]</div>
             <a href="#" class="sidebar-link active" data-section="network">Network Status</a>
             <a href="#" class="sidebar-link" data-section="fleet">Fleet Control</a>
@@ -314,9 +312,9 @@
 
         <main class="core-content" style="overflow-y: auto;">
             <h2 style="margin-bottom: 2rem;">NETWORK_SECTORS</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+            <div class="grid-split-2">
                 <div
-                    style="height: 300px; background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.2); position: relative; overflow: hidden;">
+                    style="height: auto; min-height: 250px; background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.2); position: relative; overflow: hidden; width: 100%;">
                     <img src="Assets/kinetic3.jpg" alt="Map"
                         style="width: 100%; height: 100%; object-fit: cover; opacity: 0.3; filter: grayscale(1);">
                     <div
@@ -327,7 +325,7 @@
                 <div>
                     <h3>CRITICAL_EVENTS</h3>
                     <div
-                        style="margin-top: 1rem; font-family: monospace; font-size: 0.8rem; max-height: 250px; overflow-y: auto; padding-right: 1rem;">
+                        style="margin-top: 1rem; font-family: monospace; font-size: 0.8rem; max-height: 250px; overflow-y: auto; padding-right: 1rem; width: 100%; box-sizing: border-box;">
                         <p style="color: var(--c-kinetic); margin-bottom: 0.5rem;">[!] SECTOR_04: High traffic detected
                         </p>
                         <p style="margin-bottom: 0.5rem;">[i] NODE_12: Re-routed successfully</p>
@@ -343,7 +341,7 @@
                 </div>
             </div>
 
-            <div style="margin-top: 4rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+            <div class="grid-split-3" style="margin-top: 4rem;">
                 <div style="padding: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
                     <h4 style="opacity: 0.5; margin-bottom: 1rem;">FLEET_HEALTH</h4>
                     <div style="height: 100px; display: flex; align-items: flex-end; gap: 5px;">
@@ -385,7 +383,7 @@
             <div
                 style="margin-top: 4rem; padding: 3rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);">
                 <h2 style="margin-bottom: 3rem;">SYSTEM_ARCHITECTURE_OVERVIEW</h2>
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem;">
+                <div class="grid-split-arch">
                     <div>
                         <h4 style="color: var(--c-kinetic); margin-bottom: 1rem;">[ L1 ] DATA_MESH</h4>
                         <p style="font-size: 0.9rem; opacity: 0.7;">Redundant neural channels connecting all 12k nodes.
@@ -404,7 +402,7 @@
                 </div>
             </div>
 
-            <div style="margin-top: 4rem; display: grid; grid-template-columns: 2fr 1fr; gap: 4rem;">
+            <div class="grid-split-2-1" style="margin-top: 4rem;">
                 <div>
                     <h2 style="margin-bottom: 2rem;">GLOBAL_ENERGY_CONSUMPTION</h2>
                     <div
@@ -654,6 +652,81 @@
                         </div>
                     </div>
                 </div>
+                <!-- ADDED ADMIN ANALYTICS CLUSTER -->
+                <div style="margin-top: 6rem; border-top: 1px solid var(--c-data-standard); padding-top: 4rem;">
+                    <h2 style="margin-bottom: 3rem; color: var(--c-obsidian);">DEEP_LAYER_METRICS</h2>
+
+                    <!-- ROW 1 -->
+                    <div class="analytics-row">
+                        <!-- CHART 1: REVENUE FLOW (Curved Area) -->
+                        <div
+                            style="background: var(--c-subtle); padding: 1.5rem; border: 1px solid var(--c-data-standard);">
+                            <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+                                <h4 style="margin:0; font-size:0.8rem; color:var(--c-kinetic);">NET_MARGIN_FLOW</h4>
+                                <span style="font-size:0.7rem; opacity:0.5; color:var(--c-obsidian);">Q3</span>
+                            </div>
+                            <div style="height: 150px; width: 100%;">
+                                <svg viewBox="0 0 100 40" preserveAspectRatio="none" style="width:100%; height:100%;">
+                                    <path
+                                        d="M0,35 C20,35 20,10 40,10 C60,10 60,30 80,30 C90,30 90,5 100,5 L100,40 L0,40 Z"
+                                        fill="var(--c-kinetic)" fill-opacity="0.15" stroke="none" />
+                                    <path d="M0,35 C20,35 20,10 40,10 C60,10 60,30 80,30 C90,30 90,5 100,5" fill="none"
+                                        stroke="var(--c-kinetic)" stroke-width="2" />
+                                </svg>
+                            </div>
+                        </div>
+
+
+
+                        <!-- ROW 2 -->
+                        <div class="analytics-row">
+                            <!-- CHART 3: PROTOCOL_USAGE (Donut) -->
+                            <div
+                                style="background: var(--c-subtle); padding: 1.5rem; border: 1px solid var(--c-data-standard);">
+                                <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+                                    <h4 style="margin:0; font-size:0.8rem; color:var(--c-kinetic);">PROTO_DIST</h4>
+                                    <span style="font-size:0.7rem; opacity:0.5; color:var(--c-obsidian);">UDP/TCP</span>
+                                </div>
+                                <div style="height: 150px; display:flex; justify-content:center; position:relative;">
+                                    <svg viewBox="0 0 36 36" style="height:100%;">
+                                        <!-- Segments -->
+                                        <circle cx="18" cy="18" r="15.9155" fill="none" stroke="var(--c-obsidian)"
+                                            stroke-width="4" opacity="0.1" />
+                                        <circle cx="18" cy="18" r="15.9155" fill="none" stroke="var(--c-kinetic)"
+                                            stroke-width="4" stroke-dasharray="60, 100" />
+                                        <circle cx="18" cy="18" r="15.9155" fill="none" stroke="var(--c-obsidian)"
+                                            stroke-width="4" stroke-dasharray="20, 100" stroke-dashoffset="-60" />
+                                    </svg>
+                                    <div
+                                        style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:50px; text-align:center;">
+                                        <div style="font-size:0.6rem; opacity:0.6; color:var(--c-obsidian);">HTTP/3
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- CHART 6: DATACENTER_TEMP (Line + Fill) -->
+                            <div
+                                style="background: var(--c-subtle); padding: 1.5rem; border: 1px solid var(--c-data-standard);">
+                                <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+                                    <h4 style="margin:0; font-size:0.8rem; color:var(--c-kinetic);">THERMAL_CORE</h4>
+                                    <span style="font-size:0.7rem; opacity:0.5; color:var(--c-obsidian);">65°C</span>
+                                </div>
+                                <div style="height: 150px; width:100%; position:relative;">
+                                    <svg viewBox="0 0 100 40" preserveAspectRatio="none"
+                                        style="width:100%; height:100%;">
+                                        <polygon
+                                            points="0,40 10,30 20,32 30,28 40,35 50,30 60,32 70,20 80,25 90,15 100,20 100,40"
+                                            fill="var(--c-obsidian)" fill-opacity="0.1" stroke="none" />
+                                        <polyline
+                                            points="0,30 10,20 20,22 30,18 40,25 50,20 60,22 70,10 80,15 90,5 100,10"
+                                            fill="none" stroke="var(--c-obsidian)" stroke-width="1.5" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
         </main>
     </div>
 
@@ -732,7 +805,7 @@
     <script>
         // Admin Dashboard Section Switching
         document.addEventListener('DOMContentLoaded', () => {
-            const sidebarLinks = document.querySelectorAll('.core-sidebar .sidebar-link[data-section]');
+            const sidebarLinks = document.querySelectorAll('.sidebar-link[data-section]');
             const mainContent = document.querySelector('.core-content');
 
             // Store the original network status content
@@ -916,13 +989,19 @@
                     e.preventDefault();
                     const section = link.getAttribute('data-section');
 
-                    // Update active state
-                    sidebarLinks.forEach(l => l.classList.remove('active'));
-                    link.classList.add('active');
+                    // Update active state in both desktop and mobile sidebars
+                    sidebarLinks.forEach(l => {
+                        if (l.getAttribute('data-section') === section) {
+                            l.classList.add('active');
+                        } else {
+                            l.classList.remove('active');
+                        }
+                    });
 
                     // Update content
                     if (sections[section]) {
                         mainContent.innerHTML = sections[section];
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
                     }
                 });
             });

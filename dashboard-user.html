@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="style.css">
     <style>
         body {
-            background: var(--c-obsidian);
-            color: var(--c-paper);
+            background: var(--c-paper);
+            color: var(--c-obsidian);
             overflow-x: hidden;
             max-width: 100vw;
         }
@@ -52,9 +52,13 @@
 
         .terminal-sidebar {
             padding: 4rem 0;
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            border-right: 1px solid rgba(var(--c-obsidian-rgb), 0.1);
             transition: transform 0.3s ease;
-            background: var(--c-obsidian);
+            background: var(--c-paper);
+            position: sticky;
+            top: 120px;
+            height: calc(100vh - 120px);
+            overflow-y: auto;
         }
 
         .terminal-sidebar.hidden {
@@ -84,7 +88,7 @@
         .sidebar-link {
             display: block;
             padding: 1rem 0;
-            color: var(--c-paper);
+            color: var(--c-obsidian);
             text-decoration: none;
             opacity: 0.6;
             transition: var(--t-fast);
@@ -106,7 +110,6 @@
         @media (max-width: 1024px) {
             .terminal-grid {
                 grid-template-columns: 1fr;
-                margin-top: 0 !important;
             }
 
             .sidebar-toggle {
@@ -120,7 +123,7 @@
                 height: calc(100vh - 70px);
                 width: 250px;
                 z-index: 998;
-                background: var(--c-obsidian);
+                background: var(--c-paper);
                 border-right: 2px solid rgba(255, 255, 255, 0.2);
                 overflow-y: auto;
                 transform: translateX(-100%);
@@ -179,7 +182,7 @@
 
         .node-table td {
             padding: 2rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(var(--c-obsidian-rgb), 0.1);
         }
     </style>
 </head>
@@ -207,8 +210,8 @@
             </select>
         </div>
         <div class="nav-module nav-actions">
+            <button id="theme-toggle" class="icon-btn">☀️</button>
             <button id="rtl-toggle" class="icon-btn">🌐</button>
-            <button id="theme-toggle" class="icon-btn">🌗</button>
             <button class="nav-btn" onclick="location.href='login.html'">LOGIN</button>
         </div>
     </nav>
@@ -224,6 +227,8 @@
 
     <div class="terminal-grid">
         <aside class="terminal-sidebar">
+            <button class="sidebar-close-btn" id="sidebar-close"
+                onclick="document.querySelector('.terminal-sidebar').classList.remove('visible')">✕</button>
             <div style="font-weight: 900; margin-bottom: 2rem; color: var(--c-kinetic);">[ MENU_V1 ]</div>
             <a href="#" class="sidebar-link active" data-section="overview">Overview</a>
             <a href="#" class="sidebar-link" data-section="shipments">Active Shipments</a>
@@ -234,7 +239,8 @@
                 onclick="alert('Logout functionality'); return false;">[ LOGOUT ]</a>
         </aside>
         <main class="terminal-main">
-            <div class="data-stream"></div>
+            <!-- Hidden when empty to remove top space -->
+            <div class="data-stream" style="display: none;"></div>
 
             <header style="display: flex; justify-content: space-between; align-items: flex-end;">
                 <div>
@@ -320,7 +326,7 @@
                             ASSISTANCE_SIGNAL</button>
                     </div>
 
-                    <div style="margin-top: 4rem; padding: 2rem; background: rgba(255,255,255,0.05);">
+                    <div style="margin-top: 4rem; padding: 2rem; background: rgba(var(--c-obsidian-rgb),0.05);">
                         <h4 style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 1rem;">SYSTEM_ANNOUNCEMENT</h4>
                         <p style="font-size: 0.9rem; opacity: 0.8; line-height: 1.4;">New node cluster active in
                             South-East Asia. Latency for Tokyo-Singapore corridor reduced by 15ms.</p>
@@ -329,32 +335,35 @@
             </div>
 
             <div style="margin-top: 6rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 4rem;">
-                <h2 style="margin-bottom: 3rem;">NODE_TRAFFIC_ANALYSIS</h2>
+                <h2 style="margin-bottom: 3rem;">TRAFFIC</h2>
                 <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;">
                     <div
-                        style="padding: 2rem; background: rgba(255,255,255,0.02); border-left: 5px solid var(--c-kinetic);">
+                        style="padding: 2rem; background: rgba(var(--c-obsidian-rgb),0.02); border-left: 5px solid var(--c-kinetic);">
                         <h4 style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 1rem;">PEAK_VELOCITY</h4>
                         <div style="font-size: 2.5rem; font-weight: 900;">1,240 <span
                                 style="font-size: 1rem; opacity: 0.5;">km/h</span></div>
                     </div>
-                    <div style="padding: 2rem; background: rgba(255,255,255,0.02); border-left: 5px solid white;">
+                    <div
+                        style="padding: 2rem; background: rgba(var(--c-obsidian-rgb),0.02); border-left: 5px solid var(--c-kinetic);">
                         <h4 style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 1rem;">LATENCY_AVG</h4>
                         <div style="font-size: 2.5rem; font-weight: 900;">4.2 <span
                                 style="font-size: 1rem; opacity: 0.5;">ms</span></div>
                     </div>
-                    <div style="padding: 2rem; background: rgba(255,255,255,0.02); border-left: 5px solid white;">
+                    <div
+                        style="padding: 2rem; background: rgba(var(--c-obsidian-rgb),0.02); border-left: 5px solid var(--c-kinetic);">
                         <h4 style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 1rem;">DROPOUT_RATE</h4>
                         <div style="font-size: 2.5rem; font-weight: 900;">0.02 <span
                                 style="font-size: 1rem; opacity: 0.5;">%</span></div>
                     </div>
-                    <div style="padding: 2rem; background: rgba(255,255,255,0.02); border-left: 5px solid white;">
+                    <div
+                        style="padding: 2rem; background: rgba(var(--c-obsidian-rgb),0.02); border-left: 5px solid var(--c-kinetic);">
                         <h4 style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 1rem;">ENCRYPT_STATUS</h4>
                         <div style="font-size: 2.5rem; font-weight: 900; color: var(--c-kinetic);">LIVE</div>
                     </div>
                 </div>
 
                 <div
-                    style="margin-top: 4rem; background: var(--c-kinetic); border-left: 5px solid white; padding: 1.5rem; position: relative; width: 100%; box-sizing: border-box;">
+                    style="margin-top: 4rem; background: var(--c-kinetic); border-left: 5px solid var(--c-kinetic); padding: 1.5rem; position: relative; width: 100%; box-sizing: border-box;">
                     <div
                         style="font-family: monospace; font-size: 0.8rem; line-height: 1.5; color: #000; font-weight: 900; word-break: break-all;">
                         [ PROGRESS_BAR ]: DATA_SYNC //////////////////////////////// <br>75% COMPLETE
@@ -390,14 +399,14 @@
 
                     <!-- Chart Container -->
                     <div
-                        style="background: rgba(255,255,255,0.02); border: 2px solid rgba(255,255,255,0.15); padding: 3rem 2rem; position: relative;">
+                        style="background: rgba(var(--c-obsidian-rgb),0.02); border: 2px solid rgba(255,255,255,0.15); padding: 3rem 2rem; position: relative;">
                         <!-- Grid Lines -->
                         <div
                             style="position: absolute; top: 3rem; left: 2rem; right: 2rem; bottom: 5rem; display: flex; flex-direction: column; justify-content: space-between; pointer-events: none;">
-                            <div style="border-top: 1px solid rgba(255,255,255,0.05);"></div>
-                            <div style="border-top: 1px solid rgba(255,255,255,0.05);"></div>
-                            <div style="border-top: 1px solid rgba(255,255,255,0.05);"></div>
-                            <div style="border-top: 1px solid rgba(255,255,255,0.05);"></div>
+                            <div style="border-top: 1px solid rgba(var(--c-obsidian-rgb),0.05);"></div>
+                            <div style="border-top: 1px solid rgba(var(--c-obsidian-rgb),0.05);"></div>
+                            <div style="border-top: 1px solid rgba(var(--c-obsidian-rgb),0.05);"></div>
+                            <div style="border-top: 1px solid rgba(var(--c-obsidian-rgb),0.05);"></div>
                         </div>
 
                         <!-- Y-Axis Labels -->
@@ -558,7 +567,7 @@
                     </div>
 
                     <div
-                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; background: rgba(255,255,255,0.02); border: 2px solid rgba(255,255,255,0.15); padding: 3rem;">
+                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; background: rgba(var(--c-obsidian-rgb),0.02); border: 2px solid rgba(255,255,255,0.15); padding: 3rem;">
                         <!-- Pie Chart -->
                         <div style="display: flex; align-items: center; justify-content: center; position: relative;">
                             <svg width="400" height="400" viewBox="-110 -110 220 220"
@@ -724,7 +733,123 @@
                     </div>
                 </div>
             </div>
-        </main>
+            <!-- ADDED ANALYTICS CLUSTER -->
+            <div style="margin-top: 6rem; border-top: 1px solid var(--c-data-standard); padding-top: 4rem;">
+                <h2 style="margin-bottom: 3rem; color: var(--c-obsidian);">LIVE_SYSTEM_TELEMETRY</h2>
+
+                <!-- ROW 1 -->
+                <div class="analytics-row">
+                    <!-- CHART 1: NODE_LATENCY (Line) -->
+                    <div
+                        style="background: var(--c-subtle); padding: 1.5rem; border: 1px solid var(--c-data-standard);">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+                            <h4 style="margin:0; font-size:0.8rem; color:var(--c-kinetic);">NODE_LATENCY_MS</h4>
+                            <span style="font-size:0.7rem; opacity:0.5; color:var(--c-obsidian);">LIVE</span>
+                        </div>
+                        <div style="height: 150px; width: 100%;">
+                            <svg viewBox="0 0 100 40" preserveAspectRatio="none" style="width:100%; height:100%;">
+                                <path d="M0,30 Q10,32 20,25 T40,20 T60,28 T80,15 T100,20" fill="none"
+                                    stroke="var(--c-kinetic)" stroke-width="1.5" />
+                                <path d="M0,35 Q10,37 20,30 T40,25 T60,33 T80,20 T100,25" fill="none"
+                                    stroke="var(--c-obsidian)" stroke-width="1" stroke-dasharray="2 2" opacity="0.5" />
+                                <!-- Grid -->
+                                <line x1="0" y1="10" x2="100" y2="10" stroke="var(--c-obsidian)" stroke-width="0.1"
+                                    opacity="0.3" />
+                                <line x1="0" y1="20" x2="100" y2="20" stroke="var(--c-obsidian)" stroke-width="0.1"
+                                    opacity="0.3" />
+                                <line x1="0" y1="30" x2="100" y2="30" stroke="var(--c-obsidian)" stroke-width="0.1"
+                                    opacity="0.3" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- CHART 2: BUFFER_USAGE (Gauge/Donut) -->
+                    <div
+                        style="background: var(--c-subtle); padding: 1.5rem; border: 1px solid var(--c-data-standard);">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+                            <h4 style="margin:0; font-size:0.8rem; color:var(--c-obsidian);">BUFFER_HEALTH</h4>
+                            <span style="font-size:0.7rem; opacity:0.5; color:var(--c-obsidian);">OPTIMAL</span>
+                        </div>
+                        <div style="height: 150px; display:flex; justify-content:center; position:relative;">
+                            <svg viewBox="0 0 36 36" style="height:100%;">
+                                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                    fill="none" stroke="var(--c-obsidian)" stroke-width="3" opacity="0.1" />
+                                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                    fill="none" stroke="var(--c-kinetic)" stroke-width="3" stroke-dasharray="75, 100" />
+                            </svg>
+                            <div
+                                style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center;">
+                                <div style="font-size:1.5rem; font-weight:900; color:var(--c-obsidian);">75%</div>
+                                <div style="font-size:0.6rem; opacity:0.5; color:var(--c-obsidian);">LOAD</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROW 2 -->
+                <div class="analytics-row">
+                    <!-- CHART 3: REGIONAL_PACKET_LOSS (Bar) -->
+
+                    <div
+                        style="display:flex; justify-content:space-between; margin-top:0.5rem; font-size:0.6rem; opacity:0.5; color:var(--c-obsidian);">
+                        <span>US</span><span>EU</span><span>AS</span><span>AF</span><span>SA</span><span>OC</span>
+                    </div>
+                </div>
+
+                <!-- CHART 4: ACTIVE_SESSIONS (Area) -->
+                <div style="background: var(--c-subtle); padding: 1.5rem; border: 1px solid var(--c-data-standard);">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+                        <h4 style="margin:0; font-size:0.8rem; color:var(--c-obsidian);">SESSION_VOLUME</h4>
+                        <span style="font-size:0.7rem; opacity:0.5; color:var(--c-obsidian);">24H</span>
+                    </div>
+                    <div style="height: 150px; width: 100%;">
+                        <svg viewBox="0 0 100 40" preserveAspectRatio="none" style="width:100%; height:100%;">
+                            <polygon points="0,40 20,30 40,35 60,10 80,20 100,5 100,40" fill="var(--c-kinetic)"
+                                fill-opacity="0.2" stroke="none" />
+                            <polyline points="0,40 20,30 40,35 60,10 80,20 100,5" fill="none" stroke="var(--c-kinetic)"
+                                stroke-width="1.5" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROW 3 -->
+            <div class="analytics-row">
+                <!-- CHART 5: ERROR_DISTRIBUTION (Stacked Bar) -->
+                <div style="background: var(--c-subtle); padding: 1.5rem; border: 1px solid var(--c-data-standard);">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+                        <h4 style="margin:0; font-size:0.8rem; color:var(--c-obsidian);">ERROR_TYPES</h4>
+                        <span style="font-size:0.7rem; opacity:0.5; color:var(--c-obsidian);">LOG</span>
+                    </div>
+                    <div
+                        style="height: 150px; display:flex; flex-direction:column; gap:0.5rem; justify-content:center;">
+                        <div
+                            style="width:100%; height:8px; background:var(--c-obsidian); opacity:0.1; border-radius:4px; overflow:hidden;">
+                            <div style="width:30%; height:100%; background:var(--c-kinetic);"></div>
+                        </div>
+                        <div
+                            style="width:100%; height:8px; background:var(--c-obsidian); opacity:0.1; border-radius:4px; overflow:hidden;">
+                            <div style="width:45%; height:100%; background:var(--c-obsidian);"></div>
+                        </div>
+                        <div
+                            style="width:100%; height:8px; background:var(--c-obsidian); opacity:0.1; border-radius:4px; overflow:hidden;">
+                            <div style="width:15%; height:100%; background:var(--c-data-standard);"></div>
+                        </div>
+                        <div style="display:flex; gap:1rem; font-size:0.6rem; margin-top:0.5rem;">
+                            <span style="color:var(--c-kinetic)">● CRITICAL</span>
+                            <span style="color:var(--c-obsidian)">● WARN</span>
+                            <span style="color:var(--c-data-standard)">● INFO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CHART 6: MEMORY_ALLOCATION (Scatter/Dot) -->
+
+
+            </div>
+    </div>
+    </div>
+    </main>
     </div>
 
     <footer>
@@ -816,7 +941,7 @@
                     <h2 style="margin-bottom: 3rem;">ACTIVE_SHIPMENTS_TRACKING</h2>
                     
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
-                        <div style="background: rgba(255,255,255,0.05); padding: 2rem; border-left: 5px solid var(--c-kinetic);">
+                        <div style="background: rgba(var(--c-obsidian-rgb),0.05); padding: 2rem; border-left: 5px solid var(--c-kinetic);">
                             <div style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 0.5rem;">TRACKING_ID</div>
                             <div style="font-size: 1.5rem; font-weight: 900; margin-bottom: 1rem;">#SPX-44291</div>
                             <div style="opacity: 0.7; margin-bottom: 1rem;">Tokyo → Los Angeles</div>
@@ -826,7 +951,7 @@
                             </div>
                         </div>
                         
-                        <div style="background: rgba(255,255,255,0.05); padding: 2rem; border-left: 5px solid white;">
+                        <div style="background: rgba(var(--c-obsidian-rgb),0.05); padding: 2rem; border-left: 5px solid var(--c-kinetic);">
                             <div style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 0.5rem;">TRACKING_ID</div>
                             <div style="font-size: 1.5rem; font-weight: 900; margin-bottom: 1rem;">#SPX-44188</div>
                             <div style="opacity: 0.7; margin-bottom: 1rem;">Berlin → Singapore</div>
@@ -836,7 +961,7 @@
                             </div>
                         </div>
                         
-                        <div style="background: rgba(255,255,255,0.05); padding: 2rem; border-left: 5px solid var(--c-kinetic);">
+                        <div style="background: rgba(var(--c-obsidian-rgb),0.05); padding: 2rem; border-left: 5px solid var(--c-kinetic);">
                             <div style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 0.5rem;">TRACKING_ID</div>
                             <div style="font-size: 1.5rem; font-weight: 900; margin-bottom: 1rem;">#SPX-44055</div>
                             <div style="opacity: 0.7; margin-bottom: 1rem;">London → Dubai</div>
@@ -892,7 +1017,7 @@
                             <p style="opacity: 0.8;">Package #SPX-44291 has been delayed due to weather conditions. New ETA: 16:45 UTC.</p>
                         </div>
                         
-                        <div style="background: rgba(255,255,255,0.05); padding: 2rem; border-left: 5px solid white;">
+                        <div style="background: rgba(var(--c-obsidian-rgb),0.05); padding: 2rem; border-left: 5px solid var(--c-kinetic);">
                             <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
                                 <div style="font-weight: 900;">[ INFO ] Delivery Complete</div>
                                 <div style="opacity: 0.5; font-size: 0.8rem;">5 hours ago</div>
@@ -900,7 +1025,7 @@
                             <p style="opacity: 0.8;">Your package #SPX-44188 has been successfully delivered to the destination.</p>
                         </div>
                         
-                        <div style="background: rgba(255,255,255,0.05); padding: 2rem; border-left: 5px solid white;">
+                        <div style="background: rgba(var(--c-obsidian-rgb),0.05); padding: 2rem; border-left: 5px solid var(--c-kinetic);">
                             <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
                                 <div style="font-weight: 900;">[ INFO ] System Update</div>
                                 <div style="opacity: 0.5; font-size: 0.8rem;">1 day ago</div>
@@ -916,7 +1041,7 @@
                     <div style="max-width: 600px;">
                         <div style="margin-bottom: 3rem;">
                             <h3 style="margin-bottom: 1.5rem;">PROFILE_INFORMATION</h3>
-                            <div style="background: rgba(255,255,255,0.05); padding: 2rem; border: 1px solid rgba(255,255,255,0.1);">
+                            <div style="background: rgba(var(--c-obsidian-rgb),0.05); padding: 2rem; border: 1px solid rgba(255,255,255,0.1);">
                                 <div style="margin-bottom: 1.5rem;">
                                     <div style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 0.5rem;">USER_ID</div>
                                     <div style="font-weight: 900;">88219-X</div>
@@ -934,7 +1059,7 @@
                         
                         <div style="margin-bottom: 3rem;">
                             <h3 style="margin-bottom: 1.5rem;">NOTIFICATION_PREFERENCES</h3>
-                            <div style="background: rgba(255,255,255,0.05); padding: 2rem; border: 1px solid rgba(255,255,255,0.1);">
+                            <div style="background: rgba(var(--c-obsidian-rgb),0.05); padding: 2rem; border: 1px solid rgba(255,255,255,0.1);">
                                 <label style="display: flex; align-items: center; margin-bottom: 1rem; cursor: pointer;">
                                     <input type="checkbox" checked style="margin-right: 1rem;">
                                     <span>Email notifications for shipment updates</span>
@@ -960,13 +1085,19 @@
                     e.preventDefault();
                     const section = link.getAttribute('data-section');
 
-                    // Update active state
-                    sidebarLinks.forEach(l => l.classList.remove('active'));
-                    link.classList.add('active');
+                    // Update active state in both desktop and mobile sidebars
+                    sidebarLinks.forEach(l => {
+                        if (l.getAttribute('data-section') === section) {
+                            l.classList.add('active');
+                        } else {
+                            l.classList.remove('active');
+                        }
+                    });
 
                     // Update content
                     if (sections[section]) {
                         mainContent.innerHTML = sections[section];
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
                     }
                 });
             });

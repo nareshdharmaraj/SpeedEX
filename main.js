@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Create Hamburger
         const hamburger = document.createElement('div');
         hamburger.className = 'hamburger';
+        hamburger.id = 'nav-hamburger'; // CRITICAL: ID for dashboard control
         hamburger.innerHTML = '<span></span><span></span><span></span>';
         navActions.insertBefore(hamburger, navActions.firstChild);
 
@@ -47,14 +48,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const isInitiallyRTL = document.documentElement.getAttribute('dir') === 'rtl';
         overlay.innerHTML = `
-            <button class="mobile-close-btn" style="position: absolute; top: 2rem; right: 2rem; background: transparent; border: none; font-size: 3rem; color: var(--c-obsidian); cursor: pointer; z-index: 12000; line-height: 1; padding: 1rem;">&times;</button>
+            <button class="mobile-menu-close" style="position: absolute; top: 1.5rem; right: 1.5rem; background: var(--c-kinetic); color: white; border: none; width: 50px; height: 50px; font-size: 1.5rem; cursor: pointer; z-index: 12000; display: flex; align-items: center; justify-content: center; border-radius: 5px; font-weight: 1000;">✕</button>
             <div class="mobile-menu-links">
                 ${navLinks.innerHTML}
                 <div class="mobile-menu-extra" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                     ${loginBtn ? `<a href="login.html">${loginBtn.innerText}</a>` : ''}
                     <div style="display:flex; gap:2rem; justify-content:center; align-items:center; width:100%;">
+                        <button class="icon-btn mobile-theme-btn">☀️</button>
                         <button class="icon-btn mobile-rtl-btn">🌐</button>
-                        <button class="icon-btn mobile-theme-btn">🌗</button>
                     </div>
                 </div>
             </div>
@@ -73,8 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : '';
         });
 
-        // Close button listener
-        overlay.querySelector('.mobile-close-btn').addEventListener('click', closeMenu);
+        overlay.querySelector('.mobile-menu-close').addEventListener('click', closeMenu);
 
         // Hook up cloned toggles
         overlay.querySelector('.mobile-theme-btn').addEventListener('click', () => {
@@ -95,11 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Close menu when clicking a link
         overlay.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                overlay.classList.remove('active');
-                document.body.style.overflow = '';
-            });
+            link.addEventListener('click', closeMenu);
         });
     }
 
